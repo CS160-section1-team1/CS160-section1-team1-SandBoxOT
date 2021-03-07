@@ -75,3 +75,53 @@ header .login:hover {
     background-color: #fff;
     color: #111;
 }
+
+/* Keven Lam */
+.wrapper {
+    background-color: whitesmoke;
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Keven Lam */
+.search {
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* Keven Lam */
+.search input[type="text"] {
+    width: 600px;
+    height: 30px;
+
+    margin: 10px 20px;
+
+    font-size: 20px;
+    text-align: center;
+    background-color: #fff;
+    border: 3px solid #111;
+    border-radius: 5px;
+}
+
+/* Keven Lam */
+.search button {
+    width: 90px;
+    height: 30px;
+
+    margin: 10px 0;
+
+    font-size: 1rem;
+    color: #fff;
+    background-color: cornflowerblue;
+    border: 2px solid #111;
+    border-radius: 5px;
+}
+
+/* Keven Lam */
+.search button:hover {
+    background-color: blue;
+    color: #111;
+}
