@@ -75,3 +75,121 @@ header .login:hover {
     background-color: #fff;
     color: #111;
 }
+
+/* Keven Lam */
+.wrapper {
+    background-color: whitesmoke;
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Keven Lam */
+.search {
+    width: 80%;
+    height: 100px;
+    margin: 0 auto;
+}
+
+/* Keven Lam */
+.search input[type="text"] {
+    width: 600px;
+    height: 30px;
+
+    margin: 10px 20px;
+
+    font-size: 20px;
+    text-align: center;
+    background-color: #fff;
+    border: 3px solid #111;
+    border-radius: 5px;
+}
+
+/* Keven Lam */
+.search button {
+    width: 90px;
+    height: 30px;
+
+    margin: 10px 0;
+
+    font-size: 1rem;
+    color: #fff;
+    background-color: cornflowerblue;
+    border: 2px solid #111;
+    border-radius: 5px;
+}
+
+/* Keven Lam */
+.search button:hover {
+    background-color: blue;
+    color: #111;
+}
+
+/* Keven Lam */
+.event-container {
+    width: 95%;
+    height: 275px;
+    
+    margin: 10px auto;
+
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Keven Lam */
+.event-container img {
+    width: 50%;
+    height: 100%;
+
+    float: left;
+
+}
+
+/* Keven Lam */
+.event-container .content {
+    width:50%;
+    height: 100%;
+    
+    float: left;
+
+    background-color: cornflowerblue;
+    color: #111;
+}
+
+/* Keven Lam */
+.event-container .content h1, h2 {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    padding: 10px;
+}
+
+/* Keven Lam */
+.event-container .content p {
+    font-size: 1rem;
+    padding: 0 15px;
+}
+
+/* Keven Lam */
+.event-container .content button {
+    width: 90px;
+    height: 30px;
+
+    float: left;
+    margin-left: 350px;
+
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    background-color: cornflowerblue;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+/* Keven Lam */
+.event-container .content button:hover {
+    background-color: #fff;
+    color: #111;
+}
