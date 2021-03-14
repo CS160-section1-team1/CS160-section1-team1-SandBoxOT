@@ -28,8 +28,36 @@
 
         <a href="#" class="title">SandBoxOT</a>
 
-        <a href="#" class="login">Login</a>
+        <!-- Thomas Zakharzhevskiy -->
+        <button id="login-button" href="#" class="login">Login</a>
     </header>
+
+    <!-- Thomas Zakharzhevskiy -->
+    <div id="login-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-button">X</span>
+            <p>Login</p>
+        </div>
+    </div>
+
+    <!-- Thomas Zakharzhevskiy -->
+    <script>
+        var popup = document.getElementById("login-popup");
+        
+        document.getElementById("login-button").onclick = function() {
+          popup.style.display = "block";
+        }
+        
+        var span = document.getElementsByClassName("close-button")[0].onclick = function() {
+          popup.style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+          if (event.target == popup) {
+            popup.style.display = "none";
+          }
+        }
+    </script>
 
     <div class="wrapper">
         <!--Keven Lam-->
