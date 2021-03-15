@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 // Create new resource
-function user_signup(req, res) {
+function user_signup(request, response) {
   // Config your database credential
   const con = mysql.createConnection(config);
 
@@ -12,7 +12,9 @@ function user_signup(req, res) {
     if (err) throw err;
     console.log("Connected!");
 
-    const user = req.body;
+    const user = request.body;
+
+    console.log(user);
 
     // sanitize and check variables (To-do)
 
@@ -24,14 +26,14 @@ function user_signup(req, res) {
     con.query(sql, (err, result) => {
       if (err) {
         console.log(err.sqlMessage);
-        res.status(500).send({error: err.sqlMessage});
+        response.status(500).send({error: err.sqlMessage});
       }
       else {
-        res.send({
+        response.send({
           user_id: result.insertId,
           first_name: user.first_name,
           last_name: user.last_name,
-          email: user.email,
+          email: user.email
         });
       }
     });
