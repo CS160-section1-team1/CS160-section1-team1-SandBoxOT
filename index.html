@@ -28,8 +28,45 @@
 
         <a href="#" class="title">SandBoxOT</a>
 
-        <a href="#" class="login">Login</a>
+        <!-- Thomas Zakharzhevskiy -->
+        <button id="login-button" href="#" class="login">Login</a>
     </header>
+
+    <!-- Thomas Zakharzhevskiy -->
+    <div id="login-popup" class="popup">
+        <div class="popup-content">
+            <span class="symbol-button" id="close-login">&rarr;</span>
+            <p class="title">Login</p>
+            <div>
+                <form id="username-field" action="#" method="GET">
+                    <input type="text" name="username" placeholder="Username">
+                </form>
+                <form id="password-field" action="#" method="GET">
+                    <input type="password" name="password" placeholder="Password">
+                </form>
+                <button class="inverted-button" type="submit" name="submit">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thomas Zakharzhevskiy -->
+    <script>
+        var popup = document.getElementById("login-popup");
+        
+        document.getElementById("login-button").onclick = function() {
+          popup.style.display = "block";
+        }
+        
+        var span = document.getElementById("close-login").onclick = function() {
+          popup.style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+          if (event.target == popup) {
+            popup.style.display = "none";
+          }
+        }
+    </script>
 
     <div class="wrapper">
         <!--Keven Lam-->
@@ -53,7 +90,7 @@
                     <p>1 Washington Sq, San Jose, CA 95192</p>
                 <h2>date/time</h2>
                     <p>March 7 9-10:15 AM</p>
-                <button type="submit">REGISTER</button>
+                <button class="normal-button" type="submit">REGISTER</button>
             </div>
         </div>
     </div>
