@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/signup.css">
+    <title>Signup</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Signup</h5>
+            <div class="alert alert-danger" role="alert"></div>
+            <form class="form-signup">
+              <div class="form-label-group">
+                <input type="text" id="inputFirstName" class="form-control" placeholder="First name" required autofocus>
+                <label for="inputFirstName">First name</label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="text" id="inputLastName" class="form-control" placeholder="Last name" required autofocus>
+                <label for="inputLastName">Last name</label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="citizenRadioButton" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Citizen user
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="providerRadioButton">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Service provider
+                </label>
+              </div>
+
+              <div class="form-label-group organization">
+                <input type="text" id="inputOrganization" class="form-control" placeholder="Organization (Optional)">
+                <label for="inputOrganization">Organization (Optional)</label>
+              </div>
+
+              <hr>
+
+              <div class="form-label-group">
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+                <label for="inputEmail">Email address</label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <label for="inputPassword">Password</label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
+                <label for="inputConfirmPassword">Confirm password</label>
+              </div>
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Signup</button>
+              <p class=
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+  <script src="javascript/signup.js"></script>
+</html>
