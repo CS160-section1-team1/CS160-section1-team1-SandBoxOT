@@ -36,12 +36,16 @@ function user_signup(request, response) {
         response.status(500).send({error: err.sqlMessage});
       }
       else {
-        response.send({
-          user_id: result.insertId,
-          first_name: user.first_name,
-          last_name: user.last_name,
-          email: user.email
-        });
+
+        /* Keven Lam */
+        // Store the user info in a session to be accessed in the account.
+        // Maybe better to just store ID and query the DB?
+        request.session.user_id = result.insertId;
+        request.session.first_name = user.first_name;
+        request.session.last_name = user.last_name;
+        request.session.email = user.email;
+
+        response.redirect('/user/account');
       }
     });
   });

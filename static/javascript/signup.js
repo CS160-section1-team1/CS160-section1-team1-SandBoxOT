@@ -62,6 +62,8 @@ function callUserSignupAPI(user) {
     method: "POST"
   };
 
+  console.log('im here');
+
   fetch(URL, othePram)
   .then(data => {return data.json()})
   .then(res => {console.log(res)})
