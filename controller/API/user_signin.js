@@ -27,7 +27,7 @@ function user_signin(request, response){
           }
           else{ 
             if(result.length > 0){
-              // compare password entered to password on database
+              // compare password entered to password in database
               let compare = bcrypt.compareSync(password, result[0].password);
                 
                 if(compare){
