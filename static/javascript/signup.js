@@ -10,28 +10,28 @@ document.querySelector('#providerRadioButton').onclick = (e) => {
     document.querySelector('.form-label-group.organization').style.display = 'block';
 };
 
-document.querySelector('.form-signup').addEventListener('submit', (e) => {
-  const user = {};
+// document.querySelector('.form-signup').addEventListener('submit', (e) => {
+//   const user = {};
 
-  user.first_name = e.target.inputFirstName.value;
-  user.last_name = e.target.inputLastName.value;
-  user.password = e.target.inputPassword.value;
-  user.confirmPass = e.target.inputConfirmPassword.value;
-  user.email = e.target.inputEmail.value;
+//   user.first_name = e.target.inputFirstName.value;
+//   user.last_name = e.target.inputLastName.value;
+//   user.password = e.target.inputPassword.value;
+//   user.confirmPass = e.target.inputConfirmPassword.value;
+//   user.email = e.target.inputEmail.value;
 
-  if(!confirmPassword(user.password, user.confirmPass)) {
-    e.preventDefault();
-    return;
-  };
+//   if(!confirmPassword(user.password, user.confirmPass)) {
+//     e.preventDefault();
+//     return;
+//   };
 
-  if(e.target.providerRadioButton.checked) {
-    user.organization = e.target.inputOrganization.value;
-  }
+//   if(e.target.providerRadioButton.checked) {
+//     user.organization = e.target.inputOrganization.value;
+//   }
 
-  callUserSignupAPI(user)
+//   callUserSignupAPI(user)
 
-  e.preventDefault();
-});
+//   e.preventDefault();
+// });
 
 /* Mahdi Khaliki */
 function confirmPassword(pass, confirmPass) {
@@ -50,7 +50,7 @@ function confirmPassword(pass, confirmPass) {
 /* Mahdi Khaliki */
 function callUserSignupAPI(user) {
   //const URL = 'http://3.214.124.183/user/signup';
-  const URL = '/user/signup';
+  const URL = '/signup';
 
   const othePram = {
     headers: {
@@ -61,8 +61,6 @@ function callUserSignupAPI(user) {
     body: JSON.stringify(user),
     method: "POST"
   };
-
-  console.log('im here');
 
   fetch(URL, othePram)
   .then(data => {return data.json()})

@@ -44,10 +44,13 @@ function user_signup(request, response) {
         request.session.first_name = user.first_name;
         request.session.last_name = user.last_name;
         request.session.email = user.email;
-
-        response.redirect('/user/account');
+        
+        console.log('redirecting...');
+        response.redirect('/account');
       }
     });
+
+    
   });
 };
 

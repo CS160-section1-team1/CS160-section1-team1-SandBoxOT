@@ -14,6 +14,7 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(cors());
 /* Keven Lam */
+app.use(express.urlencoded({extended: true}));
 app.use(express.static('static'));
 app.use(session({
     secret: 'secret-key',
@@ -26,17 +27,17 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/user/signup', (req, res) => {
+app.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-app.get('/user/account', (req, res) => {
+app.get('/account', (req, res) => {
     if (req.session.user_id) {
         res.render('account', {
-            user_id: request.session.user_id,
-            first_name: request.session.first_name,
-            last_name: request.session.last_name,
-            email: request.session.email
+            user_id: req.session.user_id,
+            first_name: req.session.first_name,
+            last_name: req.session.last_name,
+            email: req.session.email
           });
     } else {
         res.render('index');
@@ -44,7 +45,7 @@ app.get('/user/account', (req, res) => {
 });
 
 // Create new resource
-app.post('/user/signup', user_signup);
-app.post('/user/signin', user_signin);
+app.post('/signup', user_signup);
+app.post('/signin', user_signin);
 
 app.listen(port, () => console.log(`Listening to port ${port}...`));

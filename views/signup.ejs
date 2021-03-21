@@ -17,14 +17,14 @@
           <div class="card-body">
             <h5 class="card-title text-center">Signup</h5>
             <div class="alert alert-danger" role="alert"></div>
-            <form class="form-signup">
+            <form class="form-signup" action="/signup" method="POST">
               <div class="form-label-group">
-                <input type="text" id="inputFirstName" class="form-control" placeholder="First name" required autofocus>
+                <input type="text" name="first_name" id="inputFirstName" class="form-control" placeholder="First name" required autofocus>
                 <label for="inputFirstName">First name</label>
               </div>
 
               <div class="form-label-group">
-                <input type="text" id="inputLastName" class="form-control" placeholder="Last name" required autofocus>
+                <input type="text" name="last_name" id="inputLastName" class="form-control" placeholder="Last name" required autofocus>
                 <label for="inputLastName">Last name</label>
               </div>
 
@@ -49,17 +49,17 @@
               <hr>
 
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required>
                 <label for="inputEmail">Email address</label>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <label for="inputPassword">Password</label>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
+                <input type="password" name="confirmPassword" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
                 <label for="inputConfirmPassword">Confirm password</label>
               </div>
 
