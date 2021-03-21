@@ -2,55 +2,55 @@ const mysql = require('mysql');
 const config = require('../database');
 const bcrypt = require('bcrypt');
 
-function user_signin(req, res){
-    // connect to database
+/* Adam Walker */
+function user_signin(request, response){
+   
     const con = mysql.createConnection(config);
 
+    // connect to database
     con.connect(err => {
         if (err) throw err;
         console.log("Connected!");
 
-        const user = req.body;
+        const user = request.body;
 
-        // get email and password
+        // get email and password from login page
         var email = user.email;
-        //var password = user.password;
+        let password = user.password;
         
-
-        var sqlQuery = `SELECT * FROM User WHERE email = ${email}`;
-
-        //check if user exists
-        // get pword from user with email
-        // compare
-        
-        con.query(sqlQuery, (error, result) => {
-            if (error) {
-              console.log(error.sqlMessage);
-              res.status(401).send({error: 'Auth failed'});
+        // Query database
+        con.query('SELECT * FROM User WHERE email = ?', [email], function(error, result)  {
+          // if error querying from database
+          if (error) {
+            console.log(error.sqlMessage);
+            response.status(401).send({error: 'Auth failed'});
+          }
+          else{ 
+            if(result.length > 0){
+              // compare password entered to password on database
+              let compare = bcrypt.compareSync(password, result[0].password);
+                
+                if(compare){
+                  // login succeeded, send user info  
+                  response.send({
+                  user_id: result[0].id,
+                  first_name: result[0].first_name,
+                  last_name: result[0].last_name,
+                  email: result[0].email});
+                  console.log("Login successful!");
+                }
+                // Email and password dont match
+                else{
+                  response.status(401).send({error: 'Email or password dont match'});
+                }
             }
-
-            // compare given password at sign in to hashed password
-            // how do I get the pword the user entered?
-            // how do I get the hashed pword from db
-            // bcrypt.compare(user.password, user.)
-
-            else {
-              res.send({
-                user_id: result.insertId,
-                first_name: user.first_name,
-                last_name: user.last_name,
-                email: user.email,
-              });
+            // Email does not exist in database
+            else{
+              response.status(401).send({error: 'Email or password dont match'});
             }
-          });
-
-        // check if email is already in database
-
-        // check if email/password combo matches user in database
-        
-
+          }
+        });          
     });
 };
-
 
 module.exports = user_signin;
