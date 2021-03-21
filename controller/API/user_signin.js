@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 const config = require('../database');
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
 
 function user_signin(req, res){
     // connect to database

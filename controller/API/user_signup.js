@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const config = require('../database');
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 /* Mahdi Khaliki */
@@ -17,7 +17,9 @@ function user_signup(request, response) {
 
     // sanitize and check variables (To-do)
 
-    const hashed_password = bcrypt.hashSync(user.password, saltRounds);
+    //const hashed_password = bcrypt.hashSync(user.password, saltRounds);
+    const hashed_password = '12345678901234567890123456789012'
+    
 
     if('organization' in user) {
       sql = 'INSERT INTO Service_Provider (first_name, last_name, organization, password, email) '+
