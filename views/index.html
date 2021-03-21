@@ -29,7 +29,11 @@
         <a href="#" class="title">SandBoxOT</a>
 
         <!-- Thomas Zakharzhevskiy -->
-        <button id="login-button" href="#" class="login">Login</a>
+        <button id="login-button" href="#" class="login">Login</button>
+
+        <!-- Mahdi Khaliki -->
+        <button id="signup-button" href="#" class="login">Signup</button>
+
     </header>
 
     <!-- Thomas Zakharzhevskiy -->
@@ -52,15 +56,15 @@
     <!-- Thomas Zakharzhevskiy -->
     <script>
         var popup = document.getElementById("login-popup");
-        
+
         document.getElementById("login-button").onclick = function() {
           popup.style.display = "block";
         }
-        
+
         var span = document.getElementById("close-login").onclick = function() {
           popup.style.display = "none";
         }
-        
+
         window.onclick = function(event) {
           if (event.target == popup) {
             popup.style.display = "none";
@@ -96,4 +100,6 @@
     </div>
 
 </body>
+
+    <script src="javascript/index.js"></script>
 </html>
