@@ -19,6 +19,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/user/signup', (req, res) => {
+    res.render('signup');
+});
+
 // Create new resource
 app.post('/user/signup', user_signup);
 app.post('/user/signin', user_signin);

@@ -49,7 +49,8 @@ function confirmPassword(pass, confirmPass) {
 
 /* Mahdi Khaliki */
 function callUserSignupAPI(user) {
-  const URL = 'http://3.214.124.183/user/signup';
+  //const URL = 'http://3.214.124.183/user/signup';
+  const URL = '/user/signup';
 
   const othePram = {
     headers: {

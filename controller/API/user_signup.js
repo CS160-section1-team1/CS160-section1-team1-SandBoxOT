@@ -18,7 +18,7 @@ function user_signup(request, response) {
     // sanitize and check variables (To-do)
 
     //const hashed_password = bcrypt.hashSync(user.password, saltRounds);
-    const hashed_password = '12345678901234567890123456789012'
+    const hashed_password = '12345678901234567890123456789012';
     
 
     if('organization' in user) {
