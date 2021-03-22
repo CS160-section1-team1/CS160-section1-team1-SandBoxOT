@@ -9,7 +9,6 @@
 * {
     margin: 0;
     padding: 0;
-    text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -36,6 +35,10 @@ header .title {
 header nav {
     float: left;
     margin: 40px 0; 
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Keven Lam */
