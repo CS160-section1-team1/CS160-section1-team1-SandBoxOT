@@ -1,0 +1,27 @@
+{
+  "name": "cs160-section1-team1-sandboxot",
+  "version": "1.0.0",
+  "description": "The project repository for CS160-01 Team 1",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bootstrap": "^4.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CS160-section1-team1/CS160-section1-team1-SandBoxOT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CS160-section1-team1/CS160-section1-team1-SandBoxOT/issues"
+  },
+  "homepage": "https://github.com/CS160-section1-team1/CS160-section1-team1-SandBoxOT#readme"
+}
