@@ -13,14 +13,16 @@
     <!--Keven Lam-->
     <div id="account-sidebar">
         <img src="img/stock.jpg">
-        <h1><%= `${first_name} ${last_name}` %></h1>
+        <h1 id="name"></h1>
         <p>Parent/Citizen</p>
 
         <h2>Email</h2>
-        <p><%= email %></p>
+        <p id="email"></p>
 
         <h2>Wallet</h2>
         <p>$0.00</p>
+
+        <button id="logout_button">Logout</button>
     </div>
 
     <div id="account-content">
@@ -28,4 +30,6 @@
     </div>
 
 </body>
+
+    <script src="js/account.js"></script>
 </html>
