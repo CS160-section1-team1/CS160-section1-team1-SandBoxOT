@@ -1,6 +1,6 @@
 const mysql = require("mysql");
-const config = require('../database');
-//const bcrypt = require('bcrypt');
+const config = require('./database');
+const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 /* Mahdi Khaliki */
@@ -17,10 +17,8 @@ function user_signup(request, response) {
 
     // sanitize and check variables (To-do)
 
-    //const hashed_password = bcrypt.hashSync(user.password, saltRounds);
-    const hashed_password = '12345678901234567890123456789012';
+    const hashed_password = bcrypt.hashSync(user.password, saltRounds);
     
-
     if('organization' in user) {
       sql = 'INSERT INTO Service_Provider (first_name, last_name, organization, password, email) '+
                 `VALUES("${user.first_name}", "${user.last_name}", "${user.organization}", "${hashed_password}", "${user.email}")`;
@@ -40,13 +38,19 @@ function user_signup(request, response) {
         /* Keven Lam */
         // Store the user info in a session to be accessed in the account.
         // Maybe better to just store ID and query the DB?
-        request.session.user_id = result.insertId;
-        request.session.first_name = user.first_name;
-        request.session.last_name = user.last_name;
-        request.session.email = user.email;
-        
-        console.log('redirecting...');
-        response.redirect('/account');
+        // request.session.user_id = result.insertId;
+        // request.session.first_name = user.first_name;
+        // request.session.last_name = user.last_name;
+        // request.session.email = user.email;
+
+        response.json({
+          user_id : result.insertId,
+          first_name : user.first_name,
+          last_name : user.last_name,
+          email : user.email
+        })
+
+        console.log('User successfully signed up!');
       }
     });
 

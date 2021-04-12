@@ -10,28 +10,28 @@ document.querySelector('#providerRadioButton').onclick = (e) => {
     document.querySelector('.form-label-group.organization').style.display = 'block';
 };
 
-// document.querySelector('.form-signup').addEventListener('submit', (e) => {
-//   const user = {};
+document.querySelector('.form-signup').addEventListener('submit', (e) => {
+  const user = {};
 
-//   user.first_name = e.target.inputFirstName.value;
-//   user.last_name = e.target.inputLastName.value;
-//   user.password = e.target.inputPassword.value;
-//   user.confirmPass = e.target.inputConfirmPassword.value;
-//   user.email = e.target.inputEmail.value;
+  user.first_name = e.target.inputFirstName.value;
+  user.last_name = e.target.inputLastName.value;
+  user.password = e.target.inputPassword.value;
+  user.confirmPass = e.target.inputConfirmPassword.value;
+  user.email = e.target.inputEmail.value;
 
-//   if(!confirmPassword(user.password, user.confirmPass)) {
-//     e.preventDefault();
-//     return;
-//   };
+  if(!confirmPassword(user.password, user.confirmPass)) {
+    e.preventDefault();
+    return;
+  };
 
-//   if(e.target.providerRadioButton.checked) {
-//     user.organization = e.target.inputOrganization.value;
-//   }
+  if(e.target.providerRadioButton.checked) {
+    user.organization = e.target.inputOrganization.value;
+  }
 
-//   callUserSignupAPI(user)
+  callUserSignupAPI(user)
 
-//   e.preventDefault();
-// });
+  e.preventDefault();
+});
 
 /* Mahdi Khaliki */
 function confirmPassword(pass, confirmPass) {
@@ -49,8 +49,10 @@ function confirmPassword(pass, confirmPass) {
 
 /* Mahdi Khaliki */
 function callUserSignupAPI(user) {
+  const host = window.location.hostname === '127.0.0.1' ? 'http://localhost:3000' : 'http://3.214.124.183';
   //const URL = 'http://3.214.124.183/user/signup';
-  const URL = '/signup';
+  const route = '/signup';
+  const URL = host.concat(route);
 
   const othePram = {
     headers: {
@@ -64,6 +66,12 @@ function callUserSignupAPI(user) {
 
   fetch(URL, othePram)
   .then(data => {return data.json()})
-  .then(res => {console.log(res)})
+  .then(res => {
+    console.log(res)
+    localStorage.setItem('first_name', res.first_name);
+    localStorage.setItem('last_name', res.last_name);
+    localStorage.setItem('email', res.email);
+    location.href = 'account.html';
+  })
   .catch(error => console.log(error));
 }
