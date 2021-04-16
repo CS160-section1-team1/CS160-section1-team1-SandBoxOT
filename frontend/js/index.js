@@ -15,8 +15,8 @@ document.querySelector('#username-field').addEventListener('submit', (e) => {
         email : document.forms['username-field']['email'].value,
         password : document.forms['username-field']['password'].value
     }
-    
-    const host = window.location.hostname === '127.0.0.1' ? 'http://localhost:3000' : 'http://3.214.124.183';
+
+    const host = window.location.hostname === '127.0.0.1' ? 'https://localhost:3000' : 'https://3.214.124.183';
     const route = '/signin';
     const URL = host.concat(route);
 
