@@ -9,11 +9,6 @@ const user_signin = require('./user_signin');
 
 const app = express();
 
-const sslServer = https.createServer( {
-  key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
-  cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
-}, app);
-
 // Middleware
 app.use(express.json());
 app.use(cors());
@@ -28,6 +23,11 @@ app.get('/', (request, response) => {
 app.post('/signup', user_signup);
 app.post('/signin', user_signin);
 
-// app.listen(port, () => console.log(`Listening to port ${port}...`));
+app.listen(port, () => console.log(`Listening to port ${port}...`));
+
+const sslServer = https.createServer( {
+  key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
+}, app);
 
 sslServer.listen(port, () => console.log(`Secure server on port ${port}`));
