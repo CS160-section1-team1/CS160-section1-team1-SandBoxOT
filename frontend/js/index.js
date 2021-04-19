@@ -16,7 +16,7 @@ document.querySelector('#username-field').addEventListener('submit', (e) => {
         password : document.forms['username-field']['password'].value
     }
 
-    const host = window.location.hostname === '127.0.0.1' ? 'https://localhost:3000' : 'https://3.214.124.183';
+    const host = window.location.hostname === '127.0.0.1' ? 'https://localhost:3000' : 'https://api.sandboxot.link';
     const route = '/signin';
     const URL = host.concat(route);
 
@@ -41,3 +41,20 @@ document.querySelector('#username-field').addEventListener('submit', (e) => {
     })
     .catch(err => console.error(err));
 });
+
+/* Thomas Zakharzhevskiy */
+var popup = document.getElementById("login-popup");
+
+document.getElementById("login-button").onclick = function() {
+  popup.style.display = "block";
+}
+
+var span = document.getElementById("close-login").onclick = function() {
+  popup.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == popup) {
+    popup.style.display = "none";
+  }
+}
