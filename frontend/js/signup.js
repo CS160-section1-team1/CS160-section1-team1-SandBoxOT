@@ -50,7 +50,7 @@ function confirmPassword(pass, confirmPass) {
 /* Mahdi Khaliki */
 function callUserSignupAPI(user) {
   const host = window.location.hostname === '127.0.0.1' ? 'http://localhost:3000' : 'http://3.214.124.183';
-  const route = '/signup';
+  const route = '/user/signup';
   const URL = host.concat(route);
 
   const othePram = {

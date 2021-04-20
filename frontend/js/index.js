@@ -17,7 +17,7 @@ document.querySelector('#username-field').addEventListener('submit', (e) => {
     }
     
     const host = window.location.hostname === '127.0.0.1' ? 'http://localhost:3000' : 'http://3.214.124.183';
-    const route = '/signin';
+    const route = '/user/login';
     const URL = host.concat(route);
 
     const otherPram = {

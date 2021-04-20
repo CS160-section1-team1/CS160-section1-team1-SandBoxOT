@@ -35,14 +35,6 @@ function user_signup(request, response) {
       }
       else {
 
-        /* Keven Lam */
-        // Store the user info in a session to be accessed in the account.
-        // Maybe better to just store ID and query the DB?
-        // request.session.user_id = result.insertId;
-        // request.session.first_name = user.first_name;
-        // request.session.last_name = user.last_name;
-        // request.session.email = user.email;
-
         response.json({
           user_id : result.insertId,
           first_name : user.first_name,
