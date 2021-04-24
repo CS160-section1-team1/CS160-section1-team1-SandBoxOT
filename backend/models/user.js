@@ -23,9 +23,6 @@ function login(req, res) {
         console.log("Login successful!");  
         res.json({
             user_id: result[0].id,
-            first_name: result[0].first_name,
-            last_name: result[0].last_name,
-            email: result[0].email
         });
     })
     .catch(err => {
@@ -56,9 +53,6 @@ function signin (req, res) {
         console.log('User successfully signed up!');
         res.json({
             user_id : result.insertId,
-            first_name : user.first_name,
-            last_name : user.last_name,
-            email : user.email
         });
     })
     .catch(err => {
@@ -67,4 +61,20 @@ function signin (req, res) {
     });
 }
 
-module.exports = {login, signin};
+function getById(req, res) {
+
+    dbUtils.queryById('User', req.params.id)
+    .then(result => {
+        res.json({
+            first_name: result[0].first_name,
+            last_name: result[0].last_name,
+            email: result[0].email
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(401).send({error: 'Could not receive user'});
+    });
+}
+
+module.exports = {login, signin, getById};

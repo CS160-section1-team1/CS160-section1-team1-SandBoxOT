@@ -33,4 +33,9 @@ function query(sqlString, values) {
     });
 }
 
-module.exports = {query};
+function queryById(table, id) {
+    const sql = `SELECT * FROM ${table} WHERE id = ?`;
+    return query(sql, [id]);
+}
+
+module.exports = {query, queryById};

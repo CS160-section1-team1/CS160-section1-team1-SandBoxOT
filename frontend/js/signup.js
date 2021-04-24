@@ -54,9 +54,7 @@ function callUserSignupAPI(user) {
 
   fetchPOST('/user/signup', user)
   .then(data => {
-    localStorage.setItem('first_name', data.first_name);
-    localStorage.setItem('last_name', data.last_name);
-    localStorage.setItem('email', data.email);
+    localStorage.setItem('user_id', data.user_id);
     location.href = 'account.html';
   })
   .catch(error => console.log(error));
