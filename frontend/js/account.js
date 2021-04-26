@@ -1,3 +1,4 @@
+
 import {fetchGET, fetchPOST} from './utils/fetchUtils.js';
 
 populatePage();
@@ -18,3 +19,8 @@ document.getElementById('logout_button').onclick = () => {
     localStorage.clear();
     location.href = 'index.html';
 }
+
+/* Mahdi Khaliki*/
+document.querySelector('.text.name').onload = (e) => {
+  console.log(e);
+};

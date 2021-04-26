@@ -26,5 +26,21 @@ document.querySelector('#username-field').addEventListener('submit', (e) => {
         location.href = 'account.html';
     })
     .catch(err => console.error(err));
-
 });
+
+/* Thomas Zakharzhevskiy */
+var popup = document.getElementById("login-popup");
+
+document.getElementById("login-button").onclick = function() {
+  popup.style.display = "block";
+}
+
+var span = document.getElementById("close-login").onclick = function() {
+  popup.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == popup) {
+    popup.style.display = "none";
+  }
+}

@@ -1,35 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <head>
 
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
-    <!--Keven Lam-->
-    <div id="account-sidebar">
-        <img src="img/stock.jpg">
-        <h1 id="name"></h1>
-        <p>Parent/Citizen</p>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
 
-        <h2>Email</h2>
-        <p id="email"></p>
+    <link rel="stylesheet" href="css/account.css">
+  </head>
 
-        <h2>Wallet</h2>
-        <p>$0.00</p>
+    <div class="box">
+      <div id="overlay">
+        <div class="image">
+        </div>
+        <ul class="text name"></ul>
 
-        <button id="logout_button">Logout</button>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading " role="tab" id="headingOne">
+        <h4 class="panel-title ">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="" aria-controls="collapseOne">
+            <div class="title  btn btn-danger btn-outline btn-lg">ABOUT WALTER</div>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          Insert account details here
+        </div>
+      </div>
     </div>
-
-    <div id="account-content">
-        Hello World
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <div class="title btn btn-danger btn-outline btn-lg">ADD EVENT</div>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+          Walter has been building websites for years. He enjoys making unique websites and web projects. His hobbies include photography, woodworking, leatherworking, fishing, and mid century modern furniture.
+        </div>
+      </div>
     </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingThree">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <div class="title btn btn-danger btn-outline btn-lg">CONTACT</div>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body">
 
-</body>
+
+
+                    <form id="form" class="topBefore">
+
+              <input id="name" type="text" placeholder="NAME">
+              <input id="email" type="text" placeholder="E-MAIL">
+              <textarea id="message" type="text" placeholder="MESSAGE"></textarea>
+              <input id="submit" type="submit" value="Submit Now!">
+
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <script type="module" src="js/account.js"></script>
 </html>
