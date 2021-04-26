@@ -1,3 +1,5 @@
+import {fetchGET, fetchPOST} from './utils/fetchUtils.js';
+
 /* Mahdi Khaliki*/
 document.querySelector('#citizenRadioButton').onclick = (e) => {
   if(e.target.checked)
@@ -49,28 +51,10 @@ function confirmPassword(pass, confirmPass) {
 
 /* Mahdi Khaliki */
 function callUserSignupAPI(user) {
-  const host = window.location.hostname === '127.0.0.1' ? 'https://localhost:3000' : 'https://api.sandboxot.link';
-  console.log(host);
-  const route = '/signup';
-  const URL = host.concat(route);
 
-  const othePram = {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type':'application/json'
-    },
-    mode: 'cors',
-    body: JSON.stringify(user),
-    method: "POST"
-  };
-
-  fetch(URL, othePram)
-  .then(data => {return data.json()})
-  .then(res => {
-    console.log(res)
-    localStorage.setItem('first_name', res.first_name);
-    localStorage.setItem('last_name', res.last_name);
-    localStorage.setItem('email', res.email);
+  fetchPOST('/user/signup', user)
+  .then(data => {
+    localStorage.setItem('user_id', data.user_id);
     location.href = 'account.html';
   })
   .catch(error => console.log(error));
