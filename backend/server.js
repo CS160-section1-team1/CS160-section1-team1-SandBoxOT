@@ -12,6 +12,10 @@ app.use(cors());
 app.use(express.urlencoded({extended: true}));
 //app.use(express.static('static'));
 
+app.get('/', (request, response) => {
+  response.send('Secure server');
+});
+
 //Create new resource
 app.post('/signup', user_signup);
 app.post('/signin', user_signin);
