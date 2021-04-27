@@ -1,0 +1,68 @@
+body {
+  display: block;
+  overflow-x: hidden;
+}
+nav {
+  background-color: white;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+.navbar-brand img {
+  max-height: 50px;
+}
+.navbar-brand {
+  font-size: 24px;
+  font-weight: 400;
+  color: #229db3;
+}
+nav ul li a {
+  color: #a9a9a9;
+  font-size: 22px;
+  margin: auto 10px;
+}
+nav ul li a:hover {
+  color: #229db3;
+}
+
+section {
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+section h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #229db3;
+  text-align: left;
+  margin-bottom: 20px;
+}
+section p {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.btn {
+  max-width: 50%;
+  border-radius: 5px !important;
+}
+
+.btn-accent {
+  color: #229db3;
+  border-color: #229db3;
+}
+
+.btn-accent:active, .btn-accent:hover {
+  background: #229db3;
+}
+
+.btn-filled {
+  color: white;
+  background: #229db3;
+  border-color: #229db3;
+}
+
+.btn-filled:active, .btn-filled:hover {
+  color: #229db3;
+  background: white;
+  border-color: #229db3;
+}
+
