@@ -4,13 +4,14 @@ body {
 }
 nav {
   background-color: white;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 .navbar-brand img {
   max-height: 50px;
 }
 .navbar-brand {
   font-size: 24px;
-  text-transform: uppercase;
   font-weight: 400;
   color: #229db3;
 }
@@ -24,8 +25,8 @@ nav ul li a:hover {
 }
 
 section {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 20px;
+  padding-bottom: 60px;
 }
 section h1 {
   text-transform: uppercase;
@@ -38,7 +39,30 @@ section p {
   font-size: 16px;
   font-weight: 300;
 }
-button {
+
+.btn {
   max-width: 50%;
-  border-radius: 50px !important;
+  border-radius: 5px !important;
 }
+
+.btn-accent {
+  color: #229db3;
+  border-color: #229db3;
+}
+
+.btn-accent:active, .btn-accent:hover {
+  background: #229db3;
+}
+
+.btn-filled {
+  color: white;
+  background: #229db3;
+  border-color: #229db3;
+}
+
+.btn-filled:active, .btn-filled:hover {
+  color: #229db3;
+  background: white;
+  border-color: #229db3;
+}
+
