@@ -21,8 +21,11 @@ function search(req, res) {
 
 function listCitizenEvents(req, res) {
 
-    const sql = 'SELECT * FROM Events WHERE id IN (SELECT event_id FROM User_Event WHERE user_id = ?)';
-    
+    const sql = 'SELECT Events.id, Events.name, Events.description, Events.date, ' + 
+        'Address.street, Address.city, Address.state, Address.zip ' +
+        'FROM (Events JOIN Address ON Address.id = Events.address_id) ' +
+        'WHERE Events.id IN (SELECT event_id FROM User_Event WHERE user_id = ?)';
+
     dbUtils.query(sql, [req.params.id])
     .then(results => {
 

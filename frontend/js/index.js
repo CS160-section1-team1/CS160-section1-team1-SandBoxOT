@@ -2,7 +2,8 @@
 import {fetchGET, fetchPOST} from './utils/fetchUtils.js';
 
 function start() {
-    if (localStorage.getItem('user_id')) location.href = 'account.html';
+    // if (localStorage.getItem('user_id')) location.href = 'account.html';
+    if (localStorage.getItem('user_id')) location.href = 'account-pre.html';
 }
 start();
 
@@ -18,7 +19,8 @@ document.querySelector('#username-field').addEventListener('submit', (e) => {
     fetchPOST('/user/login', cred)
     .then(data => {
         localStorage.setItem('user_id', data.user_id);
-        location.href = 'account.html';
+        // location.href = 'account.html';
+        location.href = 'account-pre.html';
     })
     .catch(err => console.error(err));
 });
