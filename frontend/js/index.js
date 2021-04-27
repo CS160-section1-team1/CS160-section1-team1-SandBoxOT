@@ -29,11 +29,8 @@ document.querySelector('#username-field').addEventListener('submit', (e) => {
 document.getElementById('search-bar').addEventListener('submit', (e) => {
     e.preventDefault();
 
-    fetchPOST('/event/search', {search: document.forms['search-bar']['search'].value})
-    .then(data => { 
-        console.log(data);
-    })
-    .catch(err => console.error(err));
+    localStorage.setItem('search', document.forms['search-bar']['search'].value);
+    location.href = 'searchResults.html';
 });
 
 /* Mahdi Khaliki */
