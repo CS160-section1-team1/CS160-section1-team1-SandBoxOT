@@ -13,7 +13,7 @@ function query(sqlString, values) {
                 reject(err);
             }
             else {
-                console.log("Connected to Database!");
+                // console.log("Connected to Database!");
 
                 // If connected, execute query
                 conn.query(sqlString, values, (err, result) => {
@@ -24,7 +24,7 @@ function query(sqlString, values) {
                         reject(err);
                     }
                     else {
-                        console.log("Query Succuessful!");
+                        // console.log("Query Succuessful!");
                         resolve(result);
                     }
                 });

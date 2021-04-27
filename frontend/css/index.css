@@ -243,7 +243,7 @@ header .login:hover {
 }
 
 /* Keven Lam */
-.event-container {
+.event-card-kl {
     width: 95%;
     height: 275px;
     
@@ -253,7 +253,7 @@ header .login:hover {
 }
 
 /* Keven Lam */
-.event-container img {
+.event-card-kl img {
     width: 50%;
     height: 100%;
 
@@ -262,7 +262,7 @@ header .login:hover {
 }
 
 /* Keven Lam */
-.event-container .content {
+.event-card-kl .content {
     width:50%;
     height: 100%;
     
@@ -273,7 +273,7 @@ header .login:hover {
 }
 
 /* Keven Lam */
-.event-container .content h1, h2 {
+.event-card-kl .content h1, h2 {
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
@@ -282,13 +282,13 @@ header .login:hover {
 }
 
 /* Keven Lam */
-.event-container .content p {
+.event-card-kl .content p {
     font-size: 1rem;
     padding: 0 15px;
 }
 
 /* Keven Lam */
-.event-container .content button {
+.event-card-kl .content button {
     width: 90px;
     height: 30px;
 
@@ -304,7 +304,7 @@ header .login:hover {
 }
 
 /* Keven Lam */
-.event-container .content button:hover {
+.event-card-kl .content button:hover {
     background-color: #fff;
     color: #111;
 }

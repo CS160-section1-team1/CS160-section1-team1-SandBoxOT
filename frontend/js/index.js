@@ -2,16 +2,12 @@
 import {fetchGET, fetchPOST} from './utils/fetchUtils.js';
 
 function start() {
-    if (localStorage.getItem('user_id')) location.href = 'account.html';
+    // if (localStorage.getItem('user_id')) location.href = 'account.html';
+    if (localStorage.getItem('user_id')) location.href = 'account-pre.html';
 }
 start();
 
-/* Mahdi Khaliki */
-document.querySelector('#signup-button').onclick = () => {
-    location.href = 'signup.html';
-};
-
-/* Keven Lam */
+// Login Functionality
 document.querySelector('#username-field').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -23,10 +19,27 @@ document.querySelector('#username-field').addEventListener('submit', (e) => {
     fetchPOST('/user/login', cred)
     .then(data => {
         localStorage.setItem('user_id', data.user_id);
-        location.href = 'account.html';
+        // location.href = 'account.html';
+        location.href = 'account-pre.html';
     })
     .catch(err => console.error(err));
 });
+
+// Searching Functionality
+document.getElementById('search-bar').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    fetchPOST('/event/search', {search: document.forms['search-bar']['search'].value})
+    .then(data => { 
+        console.log(data);
+    })
+    .catch(err => console.error(err));
+});
+
+/* Mahdi Khaliki */
+document.querySelector('#signup-button').onclick = () => {
+    location.href = 'signup.html';
+};
 
 /* Thomas Zakharzhevskiy */
 var popup = document.getElementById("login-popup");
