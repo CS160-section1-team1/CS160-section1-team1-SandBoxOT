@@ -3,7 +3,10 @@ const dbUtils = require('../utils/dbUtils');
 
 function search(req, res) {
 
-    const sql = 'SELECT * FROM Events WHERE name LIKE ?';
+    const sql = 'SELECT Events.id, Events.name, Events.description, Events.date, ' + 
+        'Address.street, Address.city, Address.state, Address.zip ' +
+        'FROM (Events JOIN Address ON Address.id = Events.address_id) ' +
+        'WHERE Events.name LIKE ?';
 
     dbUtils.query(sql, [`%${req.body.search}%`])
     .then(results => {
