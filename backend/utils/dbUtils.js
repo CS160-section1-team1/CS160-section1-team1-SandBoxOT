@@ -2,6 +2,7 @@
 const mysql = require('mysql');
 const config = require('./database');
 
+// General function for Any SQL Operation
 function query(sqlString, values) {
     return new Promise((resolve, reject) => {
 
@@ -33,9 +34,16 @@ function query(sqlString, values) {
     });
 }
 
+// Get a Row from the Given Table with the given ID
 function queryById(table, id) {
     const sql = `SELECT * FROM ${table} WHERE id = ?`;
     return query(sql, [id]);
 }
 
-module.exports = {query, queryById};
+// Insert to the Given Table all values in the Given Object
+function insert(table, values) {
+    const sql = `INSERT INTO ${table} SET ?`;
+    return query(sql, values);
+}
+
+module.exports = {query, queryById, insert};

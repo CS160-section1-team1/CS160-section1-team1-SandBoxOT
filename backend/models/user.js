@@ -101,4 +101,4 @@ function addCardInfo(res,req){
     });
 }
 
-module.exports = {login, signin, getById};
+module.exports = {login, signin, getById, addCardInfo};
