@@ -6,5 +6,6 @@ const User = require('../models/user');
 router.get('/:id', User.getById);
 router.post('/signup', User.signup);
 router.post('/login', User.login);
+router.post('/addCardInfo', User.addCardInfo);
 
 module.exports = router;
