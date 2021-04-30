@@ -1,8 +1,13 @@
 import {fetchGET, fetchPOST} from './utils/fetchUtils.js';
-import {createEventCardList} from './utils/cardDisplay.js';
+import {createEventCardList} from './utils/cards.js';
 
 window.onload = () => {
-    populatePage(localStorage.getItem('search'));
+    if (localStorage.getItem('searchQuery')) {
+        const searchQuery = localStorage.getItem('searchQuery');
+        localStorage.removeItem('searchQuery');
+        populatePage(searchQuery);
+    }
+    
 }
 
 async function populatePage(searchQuery) {
@@ -11,7 +16,7 @@ async function populatePage(searchQuery) {
 
         const eventsInfo = await fetchPOST(`/event/search`, {search: searchQuery});
         
-        createEventCardList(document.getElementById('searchResults-content'), eventsInfo.searchResults);
+        createEventCardList(document.getElementById('searchResults_content'), eventsInfo.searchResults);
 
     } catch (err) {
         alert(err.message);

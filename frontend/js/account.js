@@ -1,5 +1,5 @@
 import {fetchGET, fetchPOST} from './utils/fetchUtils.js';
-import {createEventCardList} from './utils/cardDisplay.js';
+import {createEventCardList} from './utils/cards.js';
 
 /* Keven Lam */
 window.onload = () => {
@@ -28,6 +28,6 @@ document.getElementById('logout_button').onclick = () => {
 }
 
 /* Mahdi Khaliki*/
-document.querySelector('.text.name').onload = (e) => {
-  console.log(e);
-};
+// document.querySelector('.text.name').onload = (e) => {
+//   console.log(e);
+// };
