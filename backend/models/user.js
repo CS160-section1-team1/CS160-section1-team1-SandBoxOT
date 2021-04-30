@@ -77,4 +77,29 @@ function getById(req, res) {
     });
 }
 
-module.exports = {login, signup, getById};
+/* Adam Walker*/
+function addCardInfo(res,req){
+    const salt = 10;
+    let sql;
+    const user = req.body;
+
+    const hashed_cardNum = bcrypt.hashSync(user.credit_card_num, salt);
+
+    sql = 'INSERT into Wallet (credit_card_num, expiration_date, csv)' +
+    `VALUES("${hashed_cardNum}", "${user.exipration_date}","${user.csv}")`;
+
+    dbUtils.query(sql, [])
+    .then(result => {
+
+        console.log('Credit card info uploaded!');
+        res.json({
+            user_id : result.id
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(401).send({error: 'Card info upload Failed'});
+    });
+}
+
+module.exports = {login, signup, getById, addCardInfo};
