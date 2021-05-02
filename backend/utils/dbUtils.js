@@ -36,7 +36,7 @@ function query(sqlString, values) {
 
 // Get a Row from the Given Table with the given ID
 function queryById(table, id) {
-    const sql = `SELECT * FROM ${table} WHERE id = ?`;
+    const sql = `SELECT * FROM ${table} WHERE ${table.toLowerCase()}_id = ?`;
     return query(sql, [id]);
 }
 

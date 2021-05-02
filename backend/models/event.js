@@ -3,10 +3,12 @@ const dbUtils = require('../utils/dbUtils');
 
 function search(req, res) {
 
-    const sql = 'SELECT Events.id, Events.name, Events.description, Events.date, ' + 
-        'Address.street, Address.city, Address.state, Address.zip ' +
-        'FROM (Events JOIN Address ON Address.id = Events.address_id) ' +
-        'WHERE Events.name LIKE ?';
+    // const sql = 'SELECT Events.id, Events.name, Events.description, Events.date, ' + 
+    //     'Address.street, Address.city, Address.state, Address.zip ' +
+    //     'FROM (Events JOIN Address ON Address.id = Events.address_id) ' +
+    //     'WHERE Events.name LIKE ?';
+
+    const sql = 'SELECT * FROM Event NATURAL JOIN Address WHERE Event.name LIKE ?';
 
     dbUtils.query(sql, [`%${req.body.search}%`])
     .then(results => {
@@ -24,10 +26,15 @@ function search(req, res) {
 
 function listCitizenEvents(req, res) {
 
-    const sql = 'SELECT Events.id, Events.name, Events.description, Events.date, ' + 
-        'Address.street, Address.city, Address.state, Address.zip ' +
-        'FROM (Events JOIN Address ON Address.id = Events.address_id) ' +
-        'WHERE Events.id IN (SELECT event_id FROM User_Event WHERE user_id = ?)';
+    // const sql = 'SELECT Events.id, Events.name, Events.description, Events.date, ' + 
+    //     'Address.street, Address.city, Address.state, Address.zip ' +
+    //     'FROM (Events JOIN Address ON Address.id = Events.address_id) ' +
+    //     'WHERE Events.id IN (SELECT event_id FROM User_Event WHERE user_id = ?)';
+
+    const sql = 'SELECT * FROM ' + 
+        'Event NATURAL JOIN Address ' + 
+        'WHERE Event.event_id IN ' +
+        '(SELECT event_id FROM User_Event WHERE user_id = ?)';
 
     dbUtils.query(sql, [req.params.id])
     .then(results => {

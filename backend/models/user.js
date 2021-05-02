@@ -6,9 +6,13 @@ function login(req, res) {
 
     let email = req.body.email;
     let password = req.body.password;
+    let sql = 'SELECT * FROM ' + 
+        'User LEFT OUTER JOIN Service_Provider ' + 
+        'ON User.user_id = Service_Provider.service_provider_id ' +
+        'WHERE email = ?';
 
     // Query database
-    dbUtils.query('SELECT * FROM User WHERE email = ?', [email])
+    dbUtils.query(sql, [email])
     .then (result => {
 
         // If bad result, throw the Error. All thrown errors handled by .catch
@@ -20,10 +24,12 @@ function login(req, res) {
         if(!compare) throw new Error('Wrong password!');
         
         // login succeeded, send user info
-        console.log("Login successful!");  
-        res.json({
-            user_id: result[0].id,
-        });
+        console.log("Login successful!"); 
+
+        const resId = (result[0].organization) ? 
+            {servicer_id: result[0].user_id} : {user_id: result[0].user_id};
+
+        res.json(resId);
     })
     .catch(err => {
         console.error(err);

@@ -74,9 +74,14 @@ document.getElementById('sot_login_form').addEventListener('submit', (e) => {
     
     fetchPOST('/user/login', cred)
     .then(data => {
-        localStorage.setItem('user_id', data.user_id);
-        // location.href = 'account.html';
-        location.href = 'account-pre.html';
+        if ('user_id' in data) {
+            localStorage.setItem('user_id', data.user_id);
+            location.href = 'account-pre.html';
+            // location.href = 'account.html';
+        }
+        else {
+            console.log(data);
+        }
     })
     .catch(err => console.error(err));
 });

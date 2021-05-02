@@ -52,11 +52,18 @@ function confirmPassword(pass, confirmPass) {
 /* Mahdi Khaliki */
 function callUserSignupAPI(user) {
 
-  fetchPOST('/user/signup', user)
+  const endpoint = ('organization' in user) ? '/serviceProvider/signup' : '/user/signup';
+
+  fetchPOST(endpoint, user)
   .then(data => {
-    localStorage.setItem('user_id', data.user_id);
-    // location.href = 'account.html';
-    location.href = 'account-pre.html';
+    if ('user_id' in data) {
+      localStorage.setItem('user_id', data.user_id);
+      location.href = 'account-pre.html';
+      // location.href = 'account.html';
+    }
+    else {
+      console.log(data);
+    }
   })
   .catch(error => console.log(error));
 }
