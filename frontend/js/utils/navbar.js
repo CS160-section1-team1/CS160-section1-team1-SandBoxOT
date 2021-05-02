@@ -76,11 +76,12 @@ document.getElementById('sot_login_form').addEventListener('submit', (e) => {
     .then(data => {
         if ('user_id' in data) {
             localStorage.setItem('user_id', data.user_id);
-            location.href = 'account-pre.html';
+            location.href = 'accountCitizen.html';
             // location.href = 'account.html';
         }
         else {
-            console.log(data);
+            localStorage.setItem('servicer_id', data.servicer_id);
+            location.href = 'accountServicer.html';
         }
     })
     .catch(err => console.error(err));

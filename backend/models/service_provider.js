@@ -33,4 +33,26 @@ function signup (req, res) {
     });
 }
 
-module.exports = {signup};
+function getById(req, res) {
+
+    const sql = 'SELECT * FROM ' + 
+        'User INNER JOIN Service_Provider ' + 
+        'ON User.user_id = Service_Provider.service_provider_id ' + 
+        'WHERE User.user_id = ?';
+
+    dbUtils.query(sql, [req.params.id])
+    .then(result => {
+        res.json({
+            first_name: result[0].first_name,
+            last_name: result[0].last_name,
+            email: result[0].email,
+            organization: result[0].organization
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(401).send({error: 'Could not receive service provider'});
+    });
+}
+
+module.exports = {signup, getById};

@@ -58,11 +58,12 @@ function callUserSignupAPI(user) {
   .then(data => {
     if ('user_id' in data) {
       localStorage.setItem('user_id', data.user_id);
-      location.href = 'account-pre.html';
+      location.href = 'accountCitizen.html';
       // location.href = 'account.html';
     }
     else {
-      console.log(data);
+      localStorage.setItem('servicer_id', data.servicer_id);
+      location.href = 'accountServicer.html';
     }
   })
   .catch(error => console.log(error));
