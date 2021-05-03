@@ -1,12 +1,45 @@
 /* Keven Lam */
 const dbUtils = require('../utils/dbUtils');
 
+function getById(req, res) {
+
+    const sql = 'SELECT * FROM Event_View WHERE event_id = ?';
+
+    dbUtils.query(sql, [req.params.id])
+    .then(results => {
+        const event = results[0];
+
+        console.log(typeof event.fee);
+        console.log(typeof event.zip);
+        console.log(event.date instanceof Date);
+
+        res.json({
+            name: event.name,
+            description: event.description,
+            date: event.date,
+            fee: event.fee,
+            service_provider: {
+                name: `${event.first_name} ${event.last_name}`,
+                email: event.email,
+                organization: event.organization
+            },
+            address: {
+                street: event.street,
+                city: event.city,
+                state: event.state,
+                zip: event.zip
+            }
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(401).send({error: 'Could not receive Event!'});
+    })
+}
+
 function search(req, res) {
 
-    const sql = 'SELECT Events.id, Events.name, Events.description, Events.date, ' + 
-        'Address.street, Address.city, Address.state, Address.zip ' +
-        'FROM (Events JOIN Address ON Address.id = Events.address_id) ' +
-        'WHERE Events.name LIKE ?';
+    const sql = 'SELECT * FROM Event_View WHERE name LIKE ?';
 
     dbUtils.query(sql, [`%${req.body.search}%`])
     .then(results => {
@@ -24,10 +57,9 @@ function search(req, res) {
 
 function listCitizenEvents(req, res) {
 
-    const sql = 'SELECT Events.id, Events.name, Events.description, Events.date, ' + 
-        'Address.street, Address.city, Address.state, Address.zip ' +
-        'FROM (Events JOIN Address ON Address.id = Events.address_id) ' +
-        'WHERE Events.id IN (SELECT event_id FROM User_Event WHERE user_id = ?)';
+    const sql = 'SELECT * FROM Event_View ' +
+        'WHERE event_id IN ' +
+        '(SELECT event_id FROM User_Event WHERE user_id = ?)';
 
     dbUtils.query(sql, [req.params.id])
     .then(results => {
@@ -40,6 +72,60 @@ function listCitizenEvents(req, res) {
     .catch(err => {
         console.error(err);
         res.status(401).send({error: 'Citizen Event List Failed!'});
+    })
+}
+
+function listServicerEvents(req, res) {
+
+    const sql = 'SELECT * FROM Event_View ' + 
+        'WHERE service_provider_id = ?';
+
+    dbUtils.query(sql, [req.params.id])
+    .then(results => {
+
+        console.log('Service Provider Event List Successful!');
+        res.json({
+            eventList: results
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(401).send({error: 'Service Provider Event List Failed!'});
+    })
+}
+
+function create(req, res) {
+
+    const service_provider_id = 115;
+    const address = {
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zip: parseInt(req.body.zip)
+    };
+
+    dbUtils.insert('Address', address)
+    .then(result => {
+        const event = {
+            name: req.body.name,
+            description: req.body.description,
+            date: new Date(req.body.date),
+            fee: parseFloat(req.body.fee),
+            picture: req.file.buffer,
+            service_provider_id: service_provider_id,
+            address_id: result.insertId
+        }
+        return dbUtils.insert('Event', event);
+    })
+    .then(result => {
+        console.log('Event Creation Succuessful!');
+        res.json({
+            event_id: result.insertId
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(401).send({error: 'Event Creation Failed!'});
     })
 }
 
@@ -65,5 +151,8 @@ function register(req, res) {
 module.exports = {
     search,
     listCitizenEvents,
-    register
+    listServicerEvents,
+    register,
+    getById,
+    create
 }
