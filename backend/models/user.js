@@ -100,5 +100,38 @@ function addCardInfo(res,req){
         res.status(401).send({error: 'Card info upload Failed'});
     });
 }
+/*Adam Walker */
+function removeUser(res,req){
+    let sql;
+    const user = req.body;
+
+    sql = `DELETE FROM User WHERE user_id = ${user.user_id}`;
+
+    dbUtils.query(sql,[])
+    .then(result =>{
+        console.log('User successfully deleted');
+    })
+    .catch(err =>{
+        console.error(err);
+        res.status(401).send({error: 'Failed: Delete user'});
+    });
+
+}
+/*Adam Walker */
+function removeEvent(res,req){
+    let sql;
+    const user = req.body;
+
+    sql = `DELETE FROM Event WHERE event_id = ${user.event_id}`;
+
+    dbUtils.query(sql,[])
+    .then(result =>{
+        console.log('Event successfully deleted');
+    })
+    .catch(err =>{
+        console.error(err);
+        res.status(401).send({error: 'Failed: Delete event'});
+    });
+}
 
 module.exports = {login, signin, getById};
