@@ -14,6 +14,7 @@ app.use(express.urlencoded({extended: true}));
 app.use('/user', require('./routes/userRoutes'));   // Keven Lam
 app.use('/event', require('./routes/eventRoutes')); // Keven Lam
 app.use('/serviceProvider', require('./routes/serviceProviderRoutes')); // Keven Lam
+app.use('/image', require('./routes/imageRoutes')); // Keven Lam
 
 app.get('/', (request, response) => {
   response.send('Secure server');

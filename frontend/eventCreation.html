@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create a New Event</title>
+</head>
+<body>
+
+    <img id="img" alt="./img/stock.jpg" width="512">
+
+    <form id='eventCreation_form'>
+            <h3>Event Details</h3>
+                <label for="event_name">Name</label>
+                <input type="text" name="name" id="event_name" placeholder="Enter Name of Event..." required>
+                
+                <label for="event_description">Description</label>
+                <textarea name="description" id="event_description" cols="30" rows="10" placeholder="Enter a Description of your Event..." required></textarea>
+
+                <label for="event_date">Date</label>
+                <input type="datetime-local" id="event_date" name="date" required>
+
+                <label for="event_fee">Fee</label>
+                <input type="number" name="fee" id="event_fee" min="0" step="1.00" required>
+
+            <h3>Event Address</h3>
+
+                <label for="event_street">Street</label>
+                <input type="text" name="street" id="event_street" required>
+
+                <label for="event_city">City</label>
+                <input type="text" name="city" id="event_city" required>
+
+                <label for="event_state">State</label>
+                <input type="text" name="state" id="event_state" required>
+
+                <label for="event_zip">ZIP</label>
+                <input type="number" name="zip" id="event_zip" required>
+
+            <h3>Event Picture</h3>
+                <label for="event_picture">Picture</label>
+                <input type="file" name="picture" id="event_picture" accept="image/*" required>
+
+
+        <button type="submit" form="eventCreation_form">Create</button>
+    </form>
+</body>
+
+    <script type="module" src="js/eventCreation.js"></script>
+
+</html>

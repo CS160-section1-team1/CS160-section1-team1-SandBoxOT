@@ -1,4 +1,5 @@
 /* Keven Lam */
+import {getImgURI} from './imgUtils.js';
 
 function createEventCardList(canvas, events) {
    
@@ -16,8 +17,8 @@ function createEventCardList(canvas, events) {
 
         const img = document.createElement('img');
         img.className = "card-img";
-        img.alt = "...";
-        img.src = "./img/stock.jpg";
+        img.alt = "./img/stock.jpg";
+        img.src = getImgURI(event.event_id);
 
         card_imgBox.append(img);
 

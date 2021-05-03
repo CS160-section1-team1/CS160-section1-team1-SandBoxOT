@@ -32,4 +32,21 @@ async function fetchPOST(endpoint, body, options=null) {
     return await res.json();
 }
 
-export {fetchGET, fetchPOST};
+async function fetchPOSTForm(endpoint, formData) {
+
+    const host = window.location.hostname === '127.0.0.1' ? 
+        'http://localhost:3000' : 'https://api.sandboxot.link';
+    const URL = host.concat(endpoint);
+
+    let params = {
+        method: "POST",
+        mode: 'cors',
+        body: formData
+    };
+
+    let res = await fetch(URL, params);
+    if (!res.ok) throw new Error(`Operation Failed with Status Code ${res.status}`);
+    return await res.json();
+}
+
+export {fetchGET, fetchPOST, fetchPOSTForm};

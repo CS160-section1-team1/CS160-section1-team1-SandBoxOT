@@ -2,23 +2,22 @@
 const dbUtils = require('../utils/dbUtils');
 
 function getById(req, res) {
-    const sql = 'SELECT * FROM ' +
-        'Event NATURAL JOIN ' +
-        'Address NATURAL JOIN ' +
-        'Service_Provider INNER JOIN ' +
-        'User ON Service_Provider.service_provider_id = User.user_id ' +
-        'WHERE Event.event_id = ?';
+
+    const sql = 'SELECT * FROM Event_View WHERE event_id = ?';
 
     dbUtils.query(sql, [req.params.id])
     .then(results => {
         const event = results[0];
 
+        console.log(typeof event.fee);
+        console.log(typeof event.zip);
+        console.log(event.date instanceof Date);
+
         res.json({
             name: event.name,
             description: event.description,
             date: event.date,
-            category: event.category,
-            picture: event.picture,
+            fee: event.fee,
             service_provider: {
                 name: `${event.first_name} ${event.last_name}`,
                 email: event.email,
@@ -40,7 +39,7 @@ function getById(req, res) {
 
 function search(req, res) {
 
-    const sql = 'SELECT * FROM Event NATURAL JOIN Address WHERE Event.name LIKE ?';
+    const sql = 'SELECT * FROM Event_View WHERE name LIKE ?';
 
     dbUtils.query(sql, [`%${req.body.search}%`])
     .then(results => {
@@ -58,9 +57,8 @@ function search(req, res) {
 
 function listCitizenEvents(req, res) {
 
-    const sql = 'SELECT * FROM ' + 
-        'Event NATURAL JOIN Address ' + 
-        'WHERE Event.event_id IN ' +
+    const sql = 'SELECT * FROM Event_View ' +
+        'WHERE event_id IN ' +
         '(SELECT event_id FROM User_Event WHERE user_id = ?)';
 
     dbUtils.query(sql, [req.params.id])
@@ -79,9 +77,8 @@ function listCitizenEvents(req, res) {
 
 function listServicerEvents(req, res) {
 
-    const sql = 'SELECT * FROM ' + 
-        'Event NATURAL JOIN Address ' + 
-        'WHERE Event.service_provider_id = ?';
+    const sql = 'SELECT * FROM Event_View ' + 
+        'WHERE service_provider_id = ?';
 
     dbUtils.query(sql, [req.params.id])
     .then(results => {
@@ -99,21 +96,29 @@ function listServicerEvents(req, res) {
 
 function create(req, res) {
 
-    dbUtils.insert('Address', req.body.address)
+    const service_provider_id = 115;
+    const address = {
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zip: parseInt(req.body.zip)
+    };
+
+    dbUtils.insert('Address', address)
     .then(result => {
         const event = {
             name: req.body.name,
             description: req.body.description,
-            date: req.body.date,
-            category: req.body.category,
-            picture: req.body.picture,
-            service_provider_id: req.body.service_provider_id,
+            date: new Date(req.body.date),
+            fee: parseFloat(req.body.fee),
+            picture: req.file.buffer,
+            service_provider_id: service_provider_id,
             address_id: result.insertId
         }
         return dbUtils.insert('Event', event);
     })
     .then(result => {
-        console.log('Event Registration Succuessful!');
+        console.log('Event Creation Succuessful!');
         res.json({
             event_id: result.insertId
         });
