@@ -7,11 +7,11 @@ window.onload = () => {
 }
 
 async function populatePage(user_id) {
-    
+
     try {
         const userInfo = await fetchGET(`/user/${user_id}`);
         const eventsInfo = await fetchGET(`/event/citizen/${user_id}`);
-        
+
         document.getElementById('name').textContent = `${userInfo.first_name} ${userInfo.last_name}`;
         document.getElementById('email').textContent = `${userInfo.email}`;
 
