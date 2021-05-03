@@ -1,18 +1,25 @@
-
 import {fetchGET, fetchPOST} from './utils/fetchUtils.js';
+import {createEventCardList} from './utils/cardDisplay.js';
 
-populatePage();
+/* Keven Lam */
+window.onload = () => {
+    populatePage(localStorage.getItem('user_id'));
+}
 
-function populatePage() {
+async function populatePage(user_id) {
     
-    fetchGET(`/user/${localStorage.getItem('user_id')}`)
-    .then(data => {
-        document.getElementById('name').textContent = `${data.first_name} ${data.last_name}`;
-        document.getElementById('email').textContent = `${data.email}`;
-    })
-    .catch(err => {
+    try {
+        const userInfo = await fetchGET(`/user/${user_id}`);
+        const eventsInfo = await fetchGET(`/event/citizen/${user_id}`);
+        
+        document.getElementById('name').textContent = `${userInfo.first_name} ${userInfo.last_name}`;
+        document.getElementById('email').textContent = `${userInfo.email}`;
+
+        createEventCardList(document.getElementById('account-content'), eventsInfo.eventList);
+
+    } catch (err) {
         alert(err.message);
-    });
+    }
 }
 
 document.getElementById('logout_button').onclick = () => {

@@ -13,14 +13,14 @@ function login(req, res) {
 
         // If bad result, throw the Error. All thrown errors handled by .catch
         if(result.length < 1) throw new Error('No such email!');
-        
+
         // compare password entered to password in database
         let compare = bcrypt.compareSync(password, result[0].password);
-            
+
         if(!compare) throw new Error('Wrong password!');
-        
+
         // login succeeded, send user info
-        console.log("Login successful!");  
+        console.log("Login successful!");
         res.json({
             user_id: result[0].id,
         });
@@ -32,7 +32,7 @@ function login(req, res) {
 }
 
 /* Mahdi Khaliki */
-function signin (req, res) {
+function signup(req, res) {
     const saltRounds = 10;
     let sql;
     const user = req.body;
@@ -49,7 +49,7 @@ function signin (req, res) {
 
     dbUtils.query(sql, [])
     .then(result => {
-        
+
         console.log('User successfully signed up!');
         res.json({
             user_id : result.insertId,
@@ -77,4 +77,29 @@ function getById(req, res) {
     });
 }
 
-module.exports = {login, signin, getById};
+/* Adam Walker*/
+function addCardInfo(res,req){
+    const salt = 10;
+    let sql;
+    const user = req.body;
+
+    const hashed_cardNum = bcrypt.hashSync(user.credit_card_num, salt);
+
+    sql = 'INSERT into Wallet (credit_card_num, expiration_date, csv)' +
+    `VALUES("${hashed_cardNum}", "${user.exipration_date}","${user.csv}")`;
+
+    dbUtils.query(sql, [])
+    .then(result => {
+
+        console.log('Credit card info uploaded!');
+        res.json({
+            user_id : result.id
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(401).send({error: 'Card info upload Failed'});
+    });
+}
+
+module.exports = {login, signup, getById, addCardInfo};
