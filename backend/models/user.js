@@ -17,12 +17,12 @@ function login(req, res) {
 
         // If bad result, throw the Error. All thrown errors handled by .catch
         if(result.length < 1) throw new Error('No such email!');
-        
+
         // compare password entered to password in database
         let compare = bcrypt.compareSync(password, result[0].password);
-            
+
         if(!compare) throw new Error('Wrong password!');
-        
+
         // login succeeded, send user info
         console.log("Login successful!"); 
 
@@ -38,7 +38,7 @@ function login(req, res) {
 }
 
 /* Mahdi Khaliki */
-function signin (req, res) {
+function signup(req, res) {
     const saltRounds = 10;
     let sql;
     const user = req.body;
@@ -55,7 +55,7 @@ function signin (req, res) {
 
     dbUtils.query(sql, [])
     .then(result => {
-        
+
         console.log('User successfully signed up!');
         res.json({
             user_id : result.insertId,
@@ -83,6 +83,7 @@ function getById(req, res) {
     });
 }
 
+/* Adam Walker*/
 function addCardInfo(res,req){
     const salt = 10;
     let sql;
@@ -95,7 +96,7 @@ function addCardInfo(res,req){
 
     dbUtils.query(sql, [])
     .then(result => {
-        
+
         console.log('Credit card info uploaded!');
         res.json({
             user_id : result.id
@@ -107,4 +108,4 @@ function addCardInfo(res,req){
     });
 }
 
-module.exports = {login, signin, getById, addCardInfo};
+module.exports = {login, signup, getById, addCardInfo};
