@@ -4,10 +4,10 @@
     <title>Sandbox of Things</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/newstyle.css">
+    <link rel="stylesheet" href="./css/wallet.css">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-  </head>
-  <body>
+
     <!-- Thomas Zakharzhevskiy -->
     <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
       <a class="navbar-brand" href="#">
@@ -18,7 +18,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse center" id="walletElement">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">Wallet</a>
@@ -26,17 +26,39 @@
         </ul>
       </div>
     </nav>
+  </head>
 
-
+  <body>
+    <div class="container" style="padding-left: 25px">
+      <h2 class="h2">Balance: </h2>
+    </div>
+    <div class="container" style="padding-left: 25px">
+      <a href="#" class="btn btn-primary">Add new card</a>
+    </div>
     <div class="container">
-      <div class="row">
-        <div class="display-6 text-center col-sm">
-          Featured Events
+      <div class="row" style="padding: 50px">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="text-center mx-auto" style="padding: 10px; width: 200px;">
+    <div class="text-center mx-auto" style="padding-top: 20px; width: 200px;">
       &#169; Sandbox of Things
     </div>
   </body>
