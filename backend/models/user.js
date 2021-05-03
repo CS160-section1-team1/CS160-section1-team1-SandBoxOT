@@ -21,8 +21,9 @@ function login(req, res) {
 
         // login succeeded, send user info
         console.log("Login successful!");
+
         res.json({
-            user_id: result[0].id,
+            user_id: result[0].user_id,
         });
     })
     .catch(err => {
@@ -91,22 +92,19 @@ function getById(req, res) {
 
 /* Adam Walker*/
 function addCardInfo(req, res){
-    const salt = 10;
     let sql;
     const user = req.body;
-
-    const hashed_cardNum = bcrypt.hashSync(user.credit_card_num, salt);
 
     const date = user.expiration_date.split('/');
 
     sql = 'INSERT into Wallet (user_id, credit_card_num, expiration_date, csv)' +
-    `VALUES("${user.id}", "${hashed_cardNum}", "${date[1]}-${date[0]}-00","${user.csv}")`;
+    `VALUES("${user.user_id}", "${user.credit_card_num}", "${date[1]}-${date[0]}-00","${user.csv}")`;
 
     dbUtils.query(sql, [])
     .then(result => {
         console.log('Credit card info uploaded!');
 
-        sql = `SELECT * FROM Wallet WHERE user_id = ${user.id}`;
+        sql = `SELECT * FROM Wallet WHERE user_id = ${user.user_id}`;
         dbUtils.query(sql, [])
         .then(result => {
             res.json(result);
@@ -121,12 +119,27 @@ function addCardInfo(req, res){
 /* Mahdi Khaliki*/
 function getCardInfo(req, res){
     let sql;
-    const user = req.body;
 
-    sql = `SELECT * FROM Wallet WHERE user_id = ${user.user_id}`;
+    const user_id = req.params.id;
+    sql = `SELECT * FROM Wallet WHERE user_id = ${user_id}`;
     dbUtils.query(sql, [])
     .then(result => {
         res.json(result);
+    }).catch(err => {
+        console.error(err);
+        res.status(401).send({error: 'Get Card Info Failed'});
+    });
+}
+
+/* Mahdi Khaliki*/
+function getBalance(req, res){
+    let sql;
+
+    const user_id = req.params.id;
+    sql = `SELECT balance FROM Balance WHERE user_id = ${user_id}`;
+    dbUtils.query(sql, [])
+    .then(result => {
+        res.json(result[0]);
     }).catch(err => {
         console.error(err);
         res.status(401).send({error: 'Get Card Info Failed'});
@@ -186,4 +199,21 @@ function withdraw(req, res){
     });
 }
 
-module.exports = {login, signup, getById, addCardInfo, getCardInfo, deposit, withdraw};
+function deleteCard(req, res) {
+    let sql;
+    const wallet_id = req.params.wallet_id;
+
+    console.log(wallet_id);
+
+    sql = `DELETE FROM Wallet WHERE wallet_id = ${wallet_id}`;
+    dbUtils.query(sql, [])
+    .then(result => {
+        res.json({deleted: wallet_id});
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(401).send({error: 'Delete Failed'});
+    });
+}
+
+module.exports = {login, signup, getById, addCardInfo, getCardInfo, getBalance, deposit, withdraw, deleteCard};

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./css/wallet.css">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script type="module" src="js/wallet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Thomas Zakharzhevskiy -->
     <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
@@ -30,29 +32,65 @@
 
   <body>
     <div class="container" style="padding-left: 25px">
-      <h2 class="h2">Balance: </h2>
+      <h2 class="h2 balance"></h2>
     </div>
-    <div class="container" style="padding-left: 25px">
-      <a href="#" class="btn btn-primary">Add new card</a>
+    <div class="container" style="padding: 25px">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+          Add New Card
+        </button>
     </div>
-    <div class="container">
-      <div class="row" style="padding: 50px">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+    <div class="container cards"></div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add New Credit Card</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+          <div class="modal-body">
+            <!-- credit card info-->
+            <div id="credit-card" class="tab-pane fade show active pt-3">
+              <form role="form">
+                <div class="form-group"> <label for="username">
+                        <h6>Card Owner</h6>
+                    </label> <input type="text" name="username" placeholder="Card Owner Name" required class="form-control ">
+                </div>
+                <div class="form-group"> <label for="cardNumber">
+                        <h6>Card number</h6>
+                    </label>
+                    <div class="input-group"> <input type="text" name="cardNumber" placeholder="Card number" class="form-control" required>
+                        <div class="input-group-append">
+                          <span class="input-group-text text-muted">
+                            <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i>
+                          </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label><span class="hidden-xs">
+                              <h6>Expiration Date</h6>
+                            </span></label>
+                            <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control" required> <input type="number" placeholder="YY" name="" class="form-control" required> </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group mb-4">
+                          <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
+                            <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                          </label> <input type="text" required class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block shadow-sm"> Add Card </button>
+                </div>
+              </form>
+            </div> <!-- End -->
           </div>
         </div>
       </div>
