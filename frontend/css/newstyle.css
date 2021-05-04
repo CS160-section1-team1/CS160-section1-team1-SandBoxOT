@@ -52,6 +52,7 @@ section p {
 
 .btn-accent:active, .btn-accent:hover {
   background: #229db3;
+  border-color: #229db3;
 }
 
 .btn-filled {
@@ -64,4 +65,16 @@ section p {
   color: #229db3;
   background: white;
   border-color: #229db3;
+}
+
+.btn-outline-success {
+  color: #229db3;
+  border-color: #229db3;
+  box-shadow: none;
+}
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #229db3;
+  border-color: #229db3;
+  box-shadow: none;
 }
