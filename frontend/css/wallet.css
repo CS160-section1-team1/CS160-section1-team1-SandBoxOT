@@ -2,10 +2,6 @@ body {
   padding-top: 100px;
 }
 
-.rounded {
-    border-radius: 1rem
-}
-
 .bold {
     font-weight: bold
 }
@@ -14,4 +10,8 @@ body {
   margin: auto;
   width: 50%;
   padding: 10px;
+}
+
+.btn.btn-outline-primary {
+  float: right;
 }
