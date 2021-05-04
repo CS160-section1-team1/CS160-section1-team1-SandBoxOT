@@ -102,8 +102,8 @@ function addCardInfo(req, res){
 
     const date = user.expiration_date.split('/');
 
-    sql = 'INSERT into Wallet (user_id, credit_card_num, expiration_date, csv)' +
-    `VALUES("${user.user_id}", "${user.credit_card_num}", "${date[1]}-${date[0]}-00","${user.csv}")`;
+    sql = 'INSERT into Wallet (user_id, name, credit_card_num, expiration_date, csv)' +
+    `VALUES("${user.user_id}", "${user.name}", "${user.credit_card_num}", "${date[1]}-${date[0]}-00","${user.csv}")`;
 
     dbUtils.query(sql, [])
     .then(result => {
