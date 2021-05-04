@@ -101,18 +101,18 @@ function addCardInfo(res,req){
     });
 }
 /*Adam Walker */
-function removeUser(res,req){
+function deleteUser(res,req){
     let sql;
-    const user = req.body;
+    const user_id = req.params.user_id;
 
-    sql = `DELETE FROM User WHERE user_id = ${user.user_id}`;
+    sql = `DELETE FROM User WHERE user_id = ${user_id}`;
 
     dbUtils.query(sql,[])
     .then(result =>{
         console.log('User successfully deleted');
         res.json({
-            redirect: 'account.html'
-        })
+            deleted: user_id
+        });
     })
     .catch(err =>{
         console.error(err);
@@ -122,4 +122,4 @@ function removeUser(res,req){
 }
 
 
-module.exports = {login, signin, getById, addCardInfo, removeUser};
+module.exports = {login, signin, getById, addCardInfo, deleteUser};

@@ -60,17 +60,17 @@ function register(req, res) {
 }
 
 /*Adam Walker */
-function removeEvent(res,req){
+function deleteEvent(res,req){
     let sql;
-    const user = req.body;
+    const address = req.params.address_id;
 
-    sql = `DELETE FROM Address WHERE address_id = ${user.address_id}`;
+    sql = `DELETE FROM Address WHERE address_id = ${address}`;
 
     dbUtils.query(sql,[])
     .then(result =>{
         console.log('Event successfully deleted');
         res.json({
-            redirect: 'index.account.html'
+            redirect: 'account.html'
         });
     })
     .catch(err =>{
@@ -83,5 +83,5 @@ module.exports = {
     search,
     listCitizenEvents,
     register,
-    removeEvent
+    deleteEvent
 }
