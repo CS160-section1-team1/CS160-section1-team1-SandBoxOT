@@ -23,9 +23,13 @@ nav ul li a:hover {
   color: #229db3;
 }
 
+#nav-section {
+  padding-bottom: 60px;
+}
+
 section {
   padding-top: 20px;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
 }
 section h1 {
   text-transform: uppercase;
@@ -88,4 +92,16 @@ section p {
   
   background-color: rgba(86,61,124,.15);
   border: 1px solid rgba(86,61,124,.2);
+}
+
+.hero-image {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow: hidden;
+  object-fit: none;
+  justify-content: center;
+  object-position: center middle;
+  width: 100%;
+  max-height: 200px;
+  margin-bottom: 1rem;
 }
