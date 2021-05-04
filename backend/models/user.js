@@ -76,7 +76,7 @@ function getById(req, res) {
         res.status(401).send({error: 'Could not receive user'});
     });
 }
-
+/*Adam Walker */
 function addCardInfo(res,req){
     const salt = 10;
     let sql;
@@ -110,6 +110,9 @@ function removeUser(res,req){
     dbUtils.query(sql,[])
     .then(result =>{
         console.log('User successfully deleted');
+        res.json({
+            redirect: 'account.html'
+        })
     })
     .catch(err =>{
         console.error(err);
@@ -117,21 +120,6 @@ function removeUser(res,req){
     });
 
 }
-/*Adam Walker */
-function removeEvent(res,req){
-    let sql;
-    const user = req.body;
 
-    sql = `DELETE FROM Event WHERE event_id = ${user.event_id}`;
 
-    dbUtils.query(sql,[])
-    .then(result =>{
-        console.log('Event successfully deleted');
-    })
-    .catch(err =>{
-        console.error(err);
-        res.status(401).send({error: 'Failed: Delete event'});
-    });
-}
-
-module.exports = {login, signin, getById};
+module.exports = {login, signin, getById, addCardInfo, removeUser};
