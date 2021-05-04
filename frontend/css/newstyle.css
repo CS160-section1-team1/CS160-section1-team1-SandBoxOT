@@ -1,5 +1,4 @@
 body {
-  display: block;
   overflow-x: hidden;
 }
 nav {
@@ -33,7 +32,6 @@ section h1 {
   font-weight: 900;
   color: #229db3;
   text-align: left;
-  margin-bottom: 20px;
 }
 section p {
   font-size: 16px;
@@ -77,4 +75,17 @@ section p {
   background-color: #229db3;
   border-color: #229db3;
   box-shadow: none;
+}
+
+#main-page {
+  max-width: 100%;
+}
+
+.page-column {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  border: 10px;
+  
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid rgba(86,61,124,.2);
 }
