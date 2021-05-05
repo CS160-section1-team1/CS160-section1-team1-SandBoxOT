@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Sandbox of Things</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/newstyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Keven Lam
+    Script to Generate NavBar -->
+    <nav id="sot_navbar"></nav>
+    <script type="module" src="js/utils/navbar.js"></script>
+
+    <!-- Thomas Zakharzhevskiy -->
+    <!-- Separates nav bar from rest of page -->
+    <section id="nav-section"></section>
+
+    <div class="container">
+        <div class="hero-image" id="event-image">
+          <img src="./img/stock-2.jpg" class="card-img" alt="...">
+        </div>
+    </div>
+
+    <!-- Thomas Zakharzhevskiy -->
+    <!-- Login Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="colform-inline d-flex my-2 my-md-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
+              <br>
+              <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-filled">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thomas Zakharzhevskiy -->    
+    <section>
+      <div class="container" id="main-page">
+        <div class="row no-gutters justify-content-between">
+          <div class="col-md-5 page-column">
+            <h5 class="card-title">Event title</h5>
+            <p class="card-text font-italic">1234 Address St., San Jose, CA</p>
+            <p class="card-text font-italic">April 20, 2021</p>
+            <div class="card-title col-sm" id="event-desc">
+              Event description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Event description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Event description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+          <div class="col-md-7 page-column">
+            <img src="./img/map.png" class="card-img" alt="...">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="text-center mx-auto" style="width: 200px;">
+      &#169; Sandbox of Things
+    </div>
+  </body>
+</html>
