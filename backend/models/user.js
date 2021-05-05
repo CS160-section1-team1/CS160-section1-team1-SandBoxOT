@@ -121,6 +121,27 @@ function addCardInfo(req, res){
     });
 }
 
+/*Adam Walker */
+function deleteUser(res,req){
+    let sql;
+    const user_id = req.params.user_id;
+
+    sql = `DELETE FROM User WHERE user_id = ${user_id}`;
+
+    dbUtils.query(sql,[])
+    .then(result =>{
+        console.log('User successfully deleted');
+        res.json({
+            deleted: user_id
+        });
+    })
+    .catch(err =>{
+        console.error(err);
+        res.status(401).send({error: 'Failed: Delete user'});
+    });
+
+}
+
 /* Mahdi Khaliki*/
 function getCardInfo(req, res){
     let sql;
@@ -221,4 +242,4 @@ function deleteCard(req, res) {
     });
 }
 
-module.exports = {login, signup, getById, addCardInfo, getCardInfo, getBalance, deposit, withdraw, deleteCard};
+module.exports = {login, signup, getById, addCardInfo, getCardInfo, getBalance, deposit, withdraw, deleteCard, deleteUser};

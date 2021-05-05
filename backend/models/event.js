@@ -166,11 +166,32 @@ function register(req, res) {
     })
 }
 
+/*Adam Walker */
+function deleteEvent(res,req){
+    let sql;
+    const address = req.params.address_id;
+
+    sql = `DELETE FROM Address WHERE address_id = ${address}`;
+
+    dbUtils.query(sql,[])
+    .then(result =>{
+        console.log('Event successfully deleted');
+        res.json({
+            redirect: 'account.html'
+        });
+    })
+    .catch(err =>{
+        console.error(err);
+        res.status(401).send({error: 'Failed: Delete event'});
+    });
+}
+
 module.exports = {
     search,
     listCitizenEvents,
-    listServicerEvents,
     register,
+    deleteEvent
+    listServicerEvents,
     getById,
     create
 }
