@@ -1,5 +1,5 @@
 import {fetchGET, fetchPOST} from './utils/fetchUtils.js';
-import {createEventCardList} from './utils/cardDisplay.js';
+import {createEventCardList} from './utils/cards.js';
 
 /* Keven Lam */
 window.onload = () => {
@@ -7,11 +7,11 @@ window.onload = () => {
 }
 
 async function populatePage(user_id) {
-    
+
     try {
         const userInfo = await fetchGET(`/user/${user_id}`);
         const eventsInfo = await fetchGET(`/event/citizen/${user_id}`);
-        
+
         document.getElementById('name').textContent = `${userInfo.first_name} ${userInfo.last_name}`;
         document.getElementById('email').textContent = `${userInfo.email}`;
 
@@ -28,6 +28,6 @@ document.getElementById('logout_button').onclick = () => {
 }
 
 /* Mahdi Khaliki*/
-document.querySelector('.text.name').onload = (e) => {
-  console.log(e);
-};
+// document.querySelector('.text.name').onload = (e) => {
+//   console.log(e);
+// };

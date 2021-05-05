@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create a New Event</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/newstyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Keven Lam -->
+
+    <!-- Script to Generate NavBar -->
+    <nav id="sot_navbar"></nav>
+    <script type="module" src="js/utils/navbar.js"></script>
+
+    <section></section>
+
+    <div class="container mb-3">
+        <div class="row">
+          <div class="display-6 text-center col-sm">
+            Create A New Event
+          </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <form id="eventCreation_form" class="row g-2">
+                    
+                    <!-- Event Name -->
+                    <div class="col-12">
+                        <label for="event_name" class="form-label">Event Name</label>
+                        <input type="text" class="form-control" name="name" id="event_name" placeholder="Enter Name of Event..." required>
+                    </div>
+
+                    <!-- Event Date -->
+                    <div class="col-6">
+                        <label for="event_date" class="form-label">Date/Time</label>
+                        <input type="datetime-local" class="form-control" name="date" id="event_date" required>
+                    </div>
+
+                    <!-- Event Fee -->
+                    <div class="col-6">
+                        <label for="event_fee" class="form-label">Fee</label>
+                        <input type="number" class="form-control" name="fee" id="event_fee" min="0" step="1.00" placeholder="0.00 for FREE" required>
+                    </div>
+
+                    <!-- Event Street -->
+                    <div class="col-12">
+                        <label for="event_street" class="form-label">Address</label>
+                        <input type="text" class="form-control" name="street" id="event_street" placeholder="1234 Main St" required>
+                    </div>
+
+                    <!-- Event City -->
+                    <div class="col-md-6">
+                        <label for="event_city" class="form-label">City</label>
+                        <input type="text" class="form-control" name="city" id="event_city" required>
+                    </div>
+                    
+                    <!-- Event State -->
+                    <div class="col-md-4">
+                        <label for="event_state" class="form-label">State</label>
+                        <input type="text" class="form-control" name="state" id="event_state" required>
+                    </div>
+
+                    <!-- Event Zip -->
+                    <div class="col-md-2">
+                        <label for="event_zip" class="form-label">Zip</label>
+                        <input type="text" class="form-control" name="zip" id="event_zip" required>
+                    </div>
+
+                    <!-- Event Picture -->
+                    <div class="col-12">
+                        <label for="event_picture" class="form-label">Uplaod a Photo for Your Event</label>
+                        <input class="form-control" type="file" name="picture" id="event_picture" accept="image/*" required>
+                    </div>
+
+                    <!-- Event Description -->
+                    <div class="col-12">
+                        <label for="event_description" class="form-label">Event Description</label>
+                        <textarea class="form-control" name="description" id="event_description" style="height: 150px" placeholder="Enter a Short Description for Your Event ..." required></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" form="eventCreation_form">Create</button>
+                    </div>
+        
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+    <script type="module" src="js/eventCreation.js"></script>
+
+</html>

@@ -1,0 +1,17 @@
+body {
+  padding-top: 100px;
+}
+
+.bold {
+    font-weight: bold
+}
+
+.btn.btn-primary.btn-block.shadow-sm {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.btn.btn-outline-primary {
+  float: right;
+}

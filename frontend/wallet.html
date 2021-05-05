@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Sandbox of Things</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/newstyle.css">
+    <link rel="stylesheet" href="./css/wallet.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script type="module" src="js/wallet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Thomas Zakharzhevskiy -->
+    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">
+        <img src="./img/sandbox-icon.png" width="30" height="30" class="d-inline-block align-text-bottom" alt="">
+        Sandbox
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse center" id="walletElement">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">Wallet</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </head>
+
+  <body>
+    <div class="container" style="padding-left: 25px">
+      <div class="row">
+        <div class="col-sm">
+          <h2 class="h2 balance"></h2>
+        </div>
+        <div class="col-sm">
+          <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#depositModalCenter"> Deposit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding: 25px">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#creditCardModalCenter"> Add New Card
+      </button>
+    </div>
+
+    <div class="container cards"></div>
+
+    <!--New Credit Card Form-->
+    <div class="modal fade" id="creditCardModalCenter" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add New Credit Card</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- credit card info-->
+            <div id="credit-card" class="tab-pane fade show active pt-3">
+              <form id="creditCardForm" role="form">
+                <div class="form-group">
+                  <label for="cardOwnerName">
+                      <h6>Card Owner</h6>
+                  </label>
+                  <input type="text" name="cardOwnerName" placeholder="Card Owner Name" required class="form-control ">
+                </div>
+                <div class="form-group">
+                  <label for="cardNumber">
+                    <h6>Card number</h6>
+                  </label>
+                  <div class="input-group"> <input type="number" name="cardNumber" placeholder="Card number" class="form-control" required>
+                      <div class="input-group-append">
+                        <span class="input-group-text text-muted">
+                          <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i>
+                        </span>
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="form-group">
+                      <label>
+                        <span class="hidden-xs"><h6>Expiration Date</h6></span>
+                      </label>
+                      <div class="input-group">
+                        <input type="number" placeholder="MM" class="form-control" name="month" required>
+                        <input type="number" placeholder="YYYY" class="form-control" name="year" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group mb-4">
+                      <h6>CVV<i class="fa d-inline"></i></h6>
+                      <input type="number" class="form-control" name="cvv" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block shadow-sm"> Add Card </button>
+                </div>
+              </form>
+            </div> <!-- End -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Deposit Form-->
+    <div class="modal fade" id="depositModalCenter" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Deposit to Wallet</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Deposit Info-->
+            <div class="tab-pane fade show active pt-3">
+              <form id="depositForm" role="form">
+                <div class="form-group">
+                  <div class="dropdown" style="padding-bottom:10px">
+                    <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Credit Cards
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2"> </div>
+                  </div>
+                </div>
+                <div class="form-group" style="padding-bottom:10px">
+                  <label>
+                    <span class="hidden-xs"><h6>Amount</h6></span>
+                  </label>
+                  <div class="input-group">
+                    <input type="text" placeholder="1.00" class="form-control" name="amount" required>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block shadow-sm"> Deposit </button>
+                </div>
+              </form>
+            </div> <!-- End -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mx-auto" style="padding-top: 20px; width: 200px;">
+      &#169; Sandbox of Things
+    </div>
+  </body>
+</html>
