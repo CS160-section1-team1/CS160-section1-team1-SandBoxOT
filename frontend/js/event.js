@@ -6,8 +6,12 @@ const event_title = document.getElementById('event_title');
 const event_address = document.getElementById('event_address');
 const event_date = document.getElementById('event_date');
 const event_desc = document.getElementById('event_desc');
+const reg_btn = document.getElementById('reg-event');
 
 window.onload = () => {
+    if (!localStorage.getItem('user_id')) {
+        reg_btn.style.display = 'none';
+    }
     populatePage(localStorage.getItem('event_id'));
 }
 
@@ -31,6 +35,22 @@ function populatePage(event_id) {
 
     hero_img.src = getImgURI(event_id);
 }
+
+reg_btn.addEventListener('click', (e) => {
+
+    const ids = {
+        event_id: localStorage.getItem('event_id'),
+        user_id: localStorage.getItem('user_id')
+    }
+
+    fetchPOST('/event/register', ids)
+    .then(data => {
+        location.href = data.redirect;
+    })
+    .catch(err => {
+        alert(err.message);
+    });
+});
 
 // Google Map Setup
 function loadGoogleMap(address) {

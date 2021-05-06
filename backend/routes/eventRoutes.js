@@ -14,6 +14,7 @@ router.get('/service_provider/:id', Event.listServicerEvents);
 router.post('/search', Event.search);
 router.post('/create', upload.single('picture'), Event.create);
 router.post('/register', Event.register);
+router.delete('/delete/:id', Event.deleteEvent);
 
 
 module.exports = router;

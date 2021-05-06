@@ -126,13 +126,12 @@ function create(req, res) {
 
 function register(req, res) {
     
-    let sql = 'SELECT (Event.fee < Balance.balance) AS sufficient ' +
+    let sql = 'SELECT (Event.fee <= Balance.balance) AS sufficient ' +
             'FROM Event, Balance ' +
             'WHERE Event.event_id = ? AND Balance.user_id = ?';
 
     dbUtils.query(sql, [req.body.event_id, req.body.user_id])
     .then(results => {
-        console.log(results);
 
         if (!results[0].sufficient) throw new Error('Insufficient Funds');
 
@@ -140,7 +139,6 @@ function register(req, res) {
         return dbUtils.query(sql, [req.body.user_id, req.body.event_id])
     })
     .then(results => {
-        console.log(results);
 
         sql = 'UPDATE Balance ' +
             'SET balance = balance - (SELECT fee FROM Event WHERE event_id = ?) ' + 
@@ -151,9 +149,8 @@ function register(req, res) {
     .then(results => {
 
         console.log('Event Registration Succuessful!');
-        console.log(results);
         res.json({
-            redirect: 'account.html'
+            redirect: 'accountCitizen.html'
         });
     })
     .catch(err => {
@@ -163,11 +160,11 @@ function register(req, res) {
 }
 
 /*Adam Walker */
-function deleteEvent(res,req){
+function deleteEvent(req,res){
     let sql;
-    const address = req.params.address_id;
+    const event_id = req.params.id;
 
-    sql = `DELETE FROM Address WHERE address_id = ${address}`;
+    sql = `DELETE FROM Address WHERE address_id = (SELECT address_id FROM Event WHERE event_id = ${event_id})`;
 
     dbUtils.query(sql,[])
     .then(result =>{
