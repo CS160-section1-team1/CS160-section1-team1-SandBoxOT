@@ -16,10 +16,10 @@ navbar.innerHTML =
     '<div class="collapse navbar-collapse" id="navbarSupportedContent">' +
         '<ul class="navbar-nav mr-auto">' +
             '<li class="nav-item active">' +
-                '<a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">Login <span class="sr-only">(current)</span></a>' +
+                '<a id="navbar_login" class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">Login <span class="sr-only">(current)</span></a>' +
             '</li>' +
             '<li class="nav-item">' +
-                '<a class="nav-link" href="signup.html">Sign Up</a>' +
+                '<a id="navbar_signup" class="nav-link" href="signup.html">Sign Up</a>' +
             '</li>' +
         '</ul>' +
         '<form id="sot_search_bar" class="colform-inline d-flex my-2 my-md-0">' +
@@ -59,6 +59,12 @@ login_modal.innerHTML =
     '</div>';
 
 navbar.parentElement.insertBefore(login_modal, navbar.nextElementSibling);
+
+// Change Navbar if Signed In
+if (localStorage.getItem('user_id') || localStorage.getItem('servicer_id')) {
+    document.getElementById('navbar_login').style.display = 'none';
+    document.getElementById('navbar_signup').style.display = 'none';
+}
 
 // Login Functionality
 document.getElementById('sot_login_form').addEventListener('submit', (e) => {

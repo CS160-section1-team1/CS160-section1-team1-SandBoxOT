@@ -96,7 +96,6 @@ function listServicerEvents(req, res) {
 
 function create(req, res) {
 
-    const service_provider_id = 115;
     const address = {
         street: req.body.street,
         city: req.body.city,
@@ -112,7 +111,7 @@ function create(req, res) {
             date: new Date(req.body.date),
             fee: parseFloat(req.body.fee),
             picture: req.file.buffer,
-            service_provider_id: service_provider_id,
+            service_provider_id: parseInt(req.body.service_provider_id),
             address_id: result.insertId
         }
         return dbUtils.insert('Event', event);
@@ -131,9 +130,28 @@ function create(req, res) {
 
 function register(req, res) {
     
-    const sql = 'INSERT INTO User_Event VALUES (?, ?)';
+    let sql = 'SELECT (Event.fee < Balance.balance) AS sufficient ' +
+            'FROM Event, Balance ' +
+            'WHERE Event.event_id = ? AND Balance.user_id = ?';
 
-    dbUtils.query(sql, [req.body.user_id, req.body.event_id])
+    dbUtils.query(sql, [req.body.event_id, req.body.user_id])
+    .then(results => {
+        console.log(results);
+
+        if (!results[0].sufficient) throw new Error('Insufficient Funds');
+
+        sql = 'INSERT INTO User_Event VALUES (?, ?)';
+        return dbUtils.query(sql, [req.body.user_id, req.body.event_id])
+    })
+    .then(results => {
+        console.log(results);
+
+        sql = 'UPDATE Balance ' +
+            'SET balance = balance - (SELECT fee FROM Event WHERE event_id = ?) ' + 
+            'WHERE user_id = ?';
+
+        return dbUtils.query(sql, [req.body.event_id, req.body.user_id]);
+    })
     .then(results => {
 
         console.log('Event Registration Succuessful!');
@@ -148,11 +166,32 @@ function register(req, res) {
     })
 }
 
+/*Adam Walker */
+function deleteEvent(res,req){
+    let sql;
+    const address = req.params.address_id;
+
+    sql = `DELETE FROM Address WHERE address_id = ${address}`;
+
+    dbUtils.query(sql,[])
+    .then(result =>{
+        console.log('Event successfully deleted');
+        res.json({
+            redirect: 'account.html'
+        });
+    })
+    .catch(err =>{
+        console.error(err);
+        res.status(401).send({error: 'Failed: Delete event'});
+    });
+}
+
 module.exports = {
     search,
     listCitizenEvents,
-    listServicerEvents,
     register,
+    deleteEvent
+    listServicerEvents,
     getById,
     create
 }
