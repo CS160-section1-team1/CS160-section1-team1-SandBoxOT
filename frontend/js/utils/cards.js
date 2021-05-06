@@ -1,12 +1,13 @@
 /* Keven Lam */
 import {getImgURI} from './imgUtils.js';
+import {formatDateString} from './dateUtils.js';
 
 function createEventCardList(canvas, events) {
    
     events.forEach(event => {
         const card = document.createElement('div');
         card.className = "card mb-3";
-        card.style = "max-width: 600px;";
+        card.style = "max-width: 800px;";
         card.dataset.id = event.event_id;
 
         const card_row = document.createElement('div');
@@ -38,7 +39,7 @@ function createEventCardList(canvas, events) {
         card_body_date.className = "card-text";
         const card_body_date_small = document.createElement('small');
         card_body_date_small.className = "font-italic";
-        card_body_date_small.textContent = event.date.toString();
+        card_body_date_small.textContent = formatDateString(event.date);
         card_body_date.append(card_body_date_small);
         
         const card_body_desc = document.createElement('p');

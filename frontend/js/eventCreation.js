@@ -9,6 +9,7 @@ document.getElementById('eventCreation_form').addEventListener('submit', e => {
     fetchPOSTForm('/event/create', fd)
     .then(data => {
         console.log(data);
+        location.href = 'accountServicer.html';
     })
     .catch(err => {
         console.error(err);
