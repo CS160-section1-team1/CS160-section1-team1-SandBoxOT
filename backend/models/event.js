@@ -90,6 +90,26 @@ function listServicerEvents(req, res) {
     })
 }
 
+function listIndexEvents(req, res) {
+
+    const sql = 'SELECT * FROM Event_View ' + 
+        'ORDER BY event_id DESC ' +
+        'LIMIT 5';
+
+    dbUtils.query(sql, [])
+    .then(results => {
+
+        console.log('Index Event List Successful!');
+        res.json({
+            eventList: results
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(401).send({error: 'Index Event List Failed!'});
+    })
+}
+
 function create(req, res) {
 
     const address = {
@@ -186,5 +206,6 @@ module.exports = {
     deleteEvent,
     listServicerEvents,
     getById,
-    create
+    create,
+    listIndexEvents
 }

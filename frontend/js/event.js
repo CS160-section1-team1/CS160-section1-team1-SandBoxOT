@@ -1,5 +1,6 @@
 import {fetchGET, fetchPOST} from './utils/fetchUtils.js';
 import {getImgURI} from './utils/imgUtils.js';
+import {formatDateString} from './utils/dateUtils.js';
 
 const hero_img = document.getElementById('event_hero_img');
 const event_title = document.getElementById('event_title');
@@ -23,9 +24,11 @@ function populatePage(event_id) {
         const address = data.address;
         event_address.textContent = `${address.street} ${address.city}, ${address.state} ${address.zip}`;
 
-        event_date.textContent = data.date;
+        event_date.textContent = formatDateString(data.date);
 
         event_desc.textContent = data.description;
+
+        reg_btn.textContent = `Register for $${data.fee}`;
 
         loadGoogleMap(`${address.street} ${address.city}, ${address.state} ${address.zip}`);
     })
@@ -48,7 +51,7 @@ reg_btn.addEventListener('click', (e) => {
         location.href = data.redirect;
     })
     .catch(err => {
-        alert(err.message);
+        alert("Insufficient Funds. Put some Money in your Wallet.");
     });
 });
 
