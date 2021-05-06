@@ -9,28 +9,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
     <script type="module" src="js/wallet.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- Thomas Zakharzhevskiy -->
-    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
-      <a class="navbar-brand" href="index.html">
-        <img src="./img/sandbox-icon.png" width="30" height="30" class="d-inline-block align-text-bottom" alt="">
-        Sandbox
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse center" id="walletElement">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">Wallet</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
   </head>
-
+  
   <body>
+
+    <!-- Script to Generate NavBar -->
+    <nav id="sot_navbar"></nav>
+    <script type="module" src="js/utils/navbar.js"></script>
+
+
     <div class="container" style="padding-left: 25px">
       <div class="row">
         <div class="col-sm">

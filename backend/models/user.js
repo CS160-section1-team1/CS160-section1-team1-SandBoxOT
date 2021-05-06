@@ -122,9 +122,9 @@ function addCardInfo(req, res){
 }
 
 /*Adam Walker */
-function deleteUser(res,req){
+function deleteUser(req,res){
     let sql;
-    const user_id = req.params.user_id;
+    const user_id = req.params.id;
 
     sql = `DELETE FROM User WHERE user_id = ${user_id}`;
 

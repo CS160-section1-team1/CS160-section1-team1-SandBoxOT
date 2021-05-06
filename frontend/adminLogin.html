@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+    <title>Admin Login</title>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+          <div class="display-6 text-center col-sm">
+            Admin Login Page
+          </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-5" >
+                <form id="admin_login_form" class="row g-5">
+                    
+                    <!-- Event Name -->
+                    <div class="col-12">
+                        <label for="admin_name" class="form-label">Admin Name</label>
+                        <input type="text" class="form-control" name="name" id="admin_name" placeholder="Admin Name" required>
+                    </div>
+
+                    <!-- Event Date -->
+                    <div class="col-12">
+                        <label for="admin_password" class="form-label">Admin Password</label>
+                        <input type="password" class="form-control" name="password" id="admin_password" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" form="admin_login_form">Login</button>
+                    </div>
+        
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+    <script type="module">
+        import {fetchPOST} from './js/utils/fetchUtils.js';
+
+        document.getElementById('admin_login_form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            console.log(e);
+
+            const cred = {
+                name: e.target[0].value,
+                password: e.target[1].value
+            };
+
+            fetchPOST('/admin/login', cred)
+            .then(data => {
+                localStorage.setItem('admin_key', 'login');
+                location.href = "adminPage.html";
+            })
+            .catch(err => {
+                alert(err.message);
+            })
+        });
+    </script>
+
+</html>

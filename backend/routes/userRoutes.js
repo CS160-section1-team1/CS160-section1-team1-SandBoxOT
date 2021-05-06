@@ -12,5 +12,6 @@ router.get('/getBalance/:id', User.getBalance);
 router.post('/deposit', User.deposit);
 router.post('/withdraw', User.withdraw);
 router.delete('/deleteCard/:wallet_id', User.deleteCard);
+router.delete('/delete/:id', User.deleteUser);
 
 module.exports = router;
