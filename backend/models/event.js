@@ -9,10 +9,6 @@ function getById(req, res) {
     .then(results => {
         const event = results[0];
 
-        console.log(typeof event.fee);
-        console.log(typeof event.zip);
-        console.log(event.date instanceof Date);
-
         res.json({
             name: event.name,
             description: event.description,
@@ -190,7 +186,7 @@ module.exports = {
     search,
     listCitizenEvents,
     register,
-    deleteEvent
+    deleteEvent,
     listServicerEvents,
     getById,
     create

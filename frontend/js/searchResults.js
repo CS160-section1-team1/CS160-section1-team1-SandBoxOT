@@ -4,7 +4,6 @@ import {createEventCardList} from './utils/cards.js';
 window.onload = () => {
     if (localStorage.getItem('searchQuery')) {
         const searchQuery = localStorage.getItem('searchQuery');
-        localStorage.removeItem('searchQuery');
         populatePage(searchQuery);
     }
     
