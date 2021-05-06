@@ -47,7 +47,7 @@ login_modal.innerHTML =
             '</div>' +
             '<div class="modal-body">' +
                 '<form id="sot_login_form" class="colform-inline d-flex my-2 my-md-0">' +
-                    '<input class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">' +
+                    '<input class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Email">' +
                     '<input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password">' +
                 '</form>' +
             '</div>' +
