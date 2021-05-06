@@ -141,9 +141,14 @@ function getBalance(req, res){
     let sql;
 
     const user_id = req.params.id;
+    console.log(user_id);
     sql = `SELECT balance FROM Balance WHERE user_id = ${user_id}`;
     dbUtils.query(sql, [])
     .then(result => {
+        if(result.length == 0) {
+            res.status(401).send({error: 'No wallet associated with user_id'});
+            return;
+        }
         res.json(result[0]);
     }).catch(err => {
         console.error(err);
@@ -163,6 +168,11 @@ function deposit(req, res){
 
     dbUtils.query(sql, [])
     .then(result => {
+        if(result.affectedRows == 0) {
+            res.status(401).send({error: 'No balance associated with user_id'});
+            return;
+        }
+        
         sql = `SELECT balance FROM Balance WHERE user_id = ${user_id}`;
         dbUtils.query(sql, [])
         .then(result => {
@@ -204,11 +214,10 @@ function withdraw(req, res){
     });
 }
 
+/* Mahdi Khaliki */
 function deleteCard(req, res) {
     let sql;
     const wallet_id = req.params.wallet_id;
-
-    console.log(wallet_id);
 
     sql = `DELETE FROM Wallet WHERE wallet_id = ${wallet_id}`;
     dbUtils.query(sql, [])

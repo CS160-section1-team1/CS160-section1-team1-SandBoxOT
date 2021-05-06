@@ -5,6 +5,7 @@ window.onload = () => {
     populatePage(localStorage.getItem('user_id')).then(addListeners);
 }
 
+/* Mahdi Khaliki*/
 document.querySelector('#creditCardForm').addEventListener('submit', creditCardFormHandler);
 document.querySelector('.dropdown-menu').addEventListener('click', dropDownMenuHandler);
 document.querySelector('#depositForm').addEventListener('submit', depositFormHandler);
@@ -88,6 +89,7 @@ async function displayCardInfo(walletInfo) {
     }
 }
 
+/* Mahdi Khaliki*/
 function populateDepositForm(walletInfo) {
   const dropDownMenu = document.querySelector('.dropdown-menu');
 
@@ -132,12 +134,14 @@ async function creditCardFormHandler(e) {
     const credit_cards = await fetchPOST(`/user/addCardInfo`, user);
 }
 
+/* Mahdi Khaliki*/
 function dropDownMenuHandler(e) {
     document.querySelector('#dropdownMenu').innerHTML = e.target.innerHTML;
     document.querySelector('.dropdown').style = 'min-width: 800px';
     e.preventDefault();
 }
 
+/* Mahdi Khaliki*/
 async function depositFormHandler(e) {
     const body =  {
         user_id: localStorage.getItem('user_id'),
