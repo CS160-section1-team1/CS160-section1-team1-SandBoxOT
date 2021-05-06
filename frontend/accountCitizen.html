@@ -14,39 +14,51 @@
 </head>
 
 <body>
-
     <!-- Keven Lam
     Script to Generate NavBar -->
     <nav id="sot_navbar"></nav>
     <script type="module" src="js/utils/navbar.js"></script>
 
-    <!--Keven Lam-->
-    <div id="account-sidebar">
-        <img src="img/stock.jpg">
-        <h1 id="name"></h1>
-        <p>Parent/Citizen</p>
+    <!-- Thomas Zakharzhevskiy -->    
+    <section id="nav-section"></section>
 
-        <h2>Email</h2>
-        <p id="email"></p>
+    <section>
+        <div class="container" id="acc-page">
+            <div class="row no-gutters justify-content-center">
+                <div class="col-md-4 page-column">
+                    <div id="account-sidebar">
+                        <img class="hero-image" src="img/acc.png">
+                        <h2 id="name"></h2>
+                        <p>Parent/Citizen</p> <!-- Do we need this -->
 
-        <a href="wallet.html"><h2>Wallet</h2></a>
-        <p>$0.00</p>
+                        <h5>Email</h5>
+                        <p id="email"></p>
 
-        <button id="logout_button">Logout</button>
-    </div>
+                        <a class="navbar-brand" href="wallet.html">
+                            View Wallet
+                        </a>
+                        <p>Current balance: $0.00</p>
 
-    <section id="events">
-        <div class="container d-flex align-items-center justify-content-center">
-          <div id="account-content" class="cards">
-  
-              <!-- Filled Dynamically with Data from DB -->
-  
-          </div>
+                        <br>
+                        <br>
+
+                        <button id="logout_button" class="btn btn-filled">Logout</button>
+                    </div>
+                </div>
+                <div class="col-md-7 page-column">
+                    <div class="container d-flex align-items-center justify-content-center">
+                        <div id="account-content" class="cards">
+        
+                            <!-- Filled Dynamically with Data from DB -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>            
         </div>
     </section>
-
 </body>
 
-    <script type="module" src="js/accountCitizen.js"></script>
+<script type="module" src="js/accountCitizen.js"></script>
 
 </html>
