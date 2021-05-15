@@ -26,4 +26,6 @@ async function testGetBalance(user_id=2) {
 	return balance ? balance.balance : null;
 }
 
+testGetBalance();
+
 module.exports = {testGetBalance};

@@ -50,3 +50,5 @@ async function testDeleteCard() {
 }
 
 testDeleteCard();
+
+module.exports = {testDeleteCard};

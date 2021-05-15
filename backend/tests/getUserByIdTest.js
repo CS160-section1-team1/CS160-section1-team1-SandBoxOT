@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-function testGetById() {
+function testUserGetById() {
 	const user_id = 2;
 
 	const URL = `https://api.sandboxot.link/user/${user_id}`;
@@ -22,4 +22,6 @@ function testGetById() {
 	});
 }
 
-testGetById();
+testUserGetById();
+
+module.exports = {testUserGetById};
