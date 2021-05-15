@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-function testWithdraw(user_id=2, amount=1.00) {
+async function testWithdraw(user_id=2, amount=1.00) {
 	const body = {
 		user_id: user_id,
 		amount: amount
@@ -18,12 +18,14 @@ function testWithdraw(user_id=2, amount=1.00) {
 	};
 
 	params.body = JSON.stringify(body);
-	fetch(URL, params).then(res => {
+	await fetch(URL, params).then(res => {
 		if(res && res.status == 200)
 			console.log('Withdraw test Passed');
 		else
 			console.log('Withdraw test Failed');
 	});
 }
+
+testWithdraw();
 
 module.exports = {testWithdraw};

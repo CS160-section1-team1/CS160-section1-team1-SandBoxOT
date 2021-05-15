@@ -30,3 +30,6 @@ function testSignup() {
 }
 
 testSignup();
+
+module.exports = {testSignup};
+

@@ -23,3 +23,5 @@ function testGetCardInfo() {
 }
 
 testGetCardInfo();
+
+module.exports = {testGetCardInfo};

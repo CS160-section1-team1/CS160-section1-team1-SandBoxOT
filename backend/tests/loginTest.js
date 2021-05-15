@@ -28,3 +28,5 @@ function testLogin() {
 }
 
 testLogin();
+
+module.exports = {testLogin};

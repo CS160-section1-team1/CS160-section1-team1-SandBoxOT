@@ -28,3 +28,7 @@ function testAddCardInfo() {
 			console.log('Add Card Info test Failed');
 	});
 }
+
+testAddCardInfo();
+
+module.exports = {testAddCardInfo};
